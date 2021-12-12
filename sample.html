@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+  </head>
+  <body>
+   <div id="demo">sample</div>
+
+    <script>
+     const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+
+document.getElementById('demo').innerHtml = params.data;
+    </script>
+    
+  </body>
+</html>
