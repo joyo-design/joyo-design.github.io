@@ -10,7 +10,8 @@
      const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 
-document.getElementById('demo').innerHtml = params.data;
+document.getElementById('demo').innerHTML = params.data;
+      
     </script>
     
   </body>
