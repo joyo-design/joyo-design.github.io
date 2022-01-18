@@ -1,0 +1,43 @@
+#jd-main {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-bottom: 100%;
+}
+#jd-canvas {
+  position: absolute;
+  font-size: 1000px;
+  width: 1000px;
+  height: 1000px;
+}
+.jd-canvas {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+}
+.jd-canvas-element-text {
+  position: absolute;
+  white-space: nowrap;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  background-color: #000;
+  padding-bottom: 0.5em;
+}
+.jd-canvas-element-image {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+  text-align: center;
+}
+[data-jd-class="action"],
+[data-jd-pointer="image-selectpixabaynext"] {
+  display: none;
+}
