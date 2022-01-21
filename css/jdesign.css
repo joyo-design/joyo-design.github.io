@@ -38,6 +38,7 @@
   text-align: center;
 }
 [data-jd-class="action"],
-[data-jd-pointer="image-selectpixabaynext"] {
+[data-jd-pointer="image-selectpixabaynext"],
+[data-jd-pointer="text-fontnext"] {
   display: none;
 }

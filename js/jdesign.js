@@ -4,10 +4,10 @@ let jdesign = function (config) {
       `{"product":{"id":"1","name":"Tshirt lengan pendek","category":"Tshirt","spesification":{"weight":400,"size":["xs","s","m","x","xl","xxl"],"model":"combat 60s"},"color":{"main":"#fefefe","recommendation":["#ff0000","#00ff00","#0000ff"]}},"display":{"key":0,"position":[{"available":true,"image":{"bottom":"https://i.ibb.co/Q8QsZPf/tshirt-depan-min.jpg","top":"https://i.ibb.co/B3R5gbF/tshirt-depan.png"},"printable":{"top":"65","left":"95","width":"140","height":"212"}},{"available":true,"image":{"bottom":"","top":""},"printable":{"top":"65","left":"95","width":"140","height":"212"}},{"available":true,"image":{"bottom":"","top":""},"printable":{"top":"65","left":"95","width":"140","height":"212"}},{"available":true,"image":{"bottom":"","top":""},"printable":{"top":"65","left":"95","width":"140","height":"212"}},{"available":true,"image":{"bottom":"https://i.ibb.co/ZhQ9DmM/tshirt-belakang-min.jpg","top":"https://i.ibb.co/47P3zWX/tshirt-belakang.png"},"printable":{"top":"65","left":"95","width":"140","height":"212"}}],"element":[{"layer":[]},{"layer":[]},{"layer":[]},{"layer":[]},{"layer":[]}]}}`
     ),
     text: JSON.parse(
-      `{"type":"text","text":{"write":"Tegxt","align":"center","bold":false,"underline":false,"italic":false},"font":{"family":"","source":""},"size":{"fontsize":75,"letterspacing":0,"lineheight":100},"position":{"top":350,"left":352},"transform":{"rotate":0,"skew":0,"flip":{"vertical":false,"horizontal":false}},"color":{"background":{"type":"normal","main":["#000000"],"poslinear":0,"posradialx":50,"posradialy":50},"opacity":"100"},"effect":{"stroke":{"width":0,"color":"#000000"},"depth":{"type":0,"width":0,"color":"#000000"},"curve":{"type":1,"round":300, "degree": 75},"outline":{"width":0,"color":"#000000"}},"shadow":{"blur":0,"color":"#000000","posx":0,"posy":0}}`
+      `{"type":"text","text":{"write":"Text","align":"center","bold":false,"underline":false,"italic":false},"font":{"family":"","source":""},"size":{"fontsize":75,"letterspacing":0,"lineheight":100},"position":{"top":350,"left":372},"transform":{"rotate":0,"skew":0,"flip":{"vertical":false,"horizontal":false}},"color":{"background":{"type":"normal","main":["#000000"],"poslinear":0,"posradialx":50,"posradialy":50},"opacity":"100"},"effect":{"stroke":{"width":0,"color":"#000000"},"depth":{"type":0,"width":0,"color":"#000000"},"curve":{"type":0,"round":300, "degree": 75},"outline":{"width":0,"color":"#000000"}},"shadow":{"blur":0,"color":"#000000","posx":0,"posy":0}}`
     ),
     image: JSON.parse(
-      `{"type":"image","src":"https://pluspng.com/img-png/png-naruto--855.png","position":{"top":500,"left":352},"dimension":{"natural":true,"width":200,"height":200,"naturalwidth":100,"naturalheight":100},"color":{"edit":{"mode":false,"main":"#ff0000"},"background":{"type":"normal","main":["#ff0000","#0000ff"],"poslinear":0,"posradialx":50,"posradialy":50},"filter":"","opacity":"100"},"transform":{"rotate":0,"skew":0,"flip":{"vertical":false,"horizontal":false}},"effect":{"stroke":{"width":0,"color":"#000000"},"depth":{"type":0,"width":0,"color":"#000000"},"outline":{"width":0,"color":"#000000"}},"shadow":{"blur":"0","color":"#000000","posx":50,"posy":50}, "round":{"top":{"left":10,"right":10}, "bottom":{"left":10,"right":10}}}`
+      `{"type":"image","src":"","position":{"top":500,"left":372},"dimension":{"natural":true,"width":200,"height":200,"naturalwidth":960,"naturalheight":960},"color":{"edit":{"mode":false,"main":"#ff0000"},"background":{"type":"none","main":["#ff0000"],"poslinear":0,"posradialx":50,"posradialy":50},"filter":"","opacity":"100"},"transform":{"rotate":0,"skew":0,"flip":{"vertical":false,"horizontal":false}},"effect":{"stroke":{"width":0,"color":"#000000"},"depth":{"type":0,"width":0,"color":"#000000"},"outline":{"width":0,"color":"#000000"}},"shadow":{"blur":"0","color":"#000000","posx":0,"posy":0}, "round":{"top":{"left":0,"right":0}, "bottom":{"left":0,"right":0}}}`
     ),
   };
   let data = config.data != undefined ? config.data : raw.data;
@@ -18,7 +18,16 @@ let jdesign = function (config) {
     type: "all",
     color: "",
   };
-
+  // api key google font = AIzaSyBImIzEJ2_-zqy04pkDd86PX5ADDIZXQ3g
+  let font = {
+    key: "AIzaSyBImIzEJ2_-zqy04pkDd86PX5ADDIZXQ3g",
+    page: 1,
+    keyword: "",
+    sort: "trending",
+    category: "",
+    language: "",
+    items: []
+  };
   let input = [
     {
       pointer: "action",
@@ -100,6 +109,7 @@ let jdesign = function (config) {
           $(`[data-jd-class="action-element-layer"]`).attr("data-jd-template")
         );
         $.each(data.display.element[data.display.key].layer, function (i, v) {
+          let en = (v.type == "text") ? ((v.text.write == "")?"Text":v.text.write) : ((String(v.src).substring(String(v.src).lastIndexOf('/')+1) == "")?"Image":String(v.src).substring(String(v.src).lastIndexOf('/')+1));
           let tn = t
             .replace(
               /\$\{element\.attr\}/g,
@@ -107,7 +117,11 @@ let jdesign = function (config) {
             )
             .replace(
               /\$\{element\.name\}/g,
-              `${v.type == "text" ? v.text.write : v.src}`
+              `${en}`
+            )
+            .replace(
+              /\$\{element\.type\}/g,
+              `${(v.type == "text")?"text":"image"}`
             );
           $(`[data-jd-class="action-element-layer"]`).prepend(`${tn}`);
         });
@@ -127,17 +141,17 @@ let jdesign = function (config) {
             : render.input("action", a[1]);
         }
         render.layer == data.display.element[data.display.key].layer.length - 1
-          ? $(`[data-jd-pointer="layer-pos"][data-jd-value="up"]`).css({
+          ? $(`[data-jd-pointer="element-layer"][data-jd-value="up"]`).css({
               display: "none",
             })
-          : $(`[data-jd-pointer="layer-pos"][data-jd-value="up"]`).css({
+          : $(`[data-jd-pointer="element-layer"][data-jd-value="up"]`).css({
               display: "block",
             });
         render.layer == 0
-          ? $(`[data-jd-pointer="layer-pos"][data-jd-value="down"]`).css({
+          ? $(`[data-jd-pointer="element-layer"][data-jd-value="down"]`).css({
               display: "none",
             })
-          : $(`[data-jd-pointer="layer-pos"][data-jd-value="down"]`).css({
+          : $(`[data-jd-pointer="element-layer"][data-jd-value="down"]`).css({
               display: "block",
             });
       },
@@ -239,6 +253,80 @@ let jdesign = function (config) {
           data.display.element[data.display.key].layer[render.layer].font =
             JSON.parse(decodeURIComponent(v));
           render.elementLayer(render.layer);
+        }
+      },
+    },
+    {
+      pointer: "text-fontsearch",
+      event: (v = null) => {
+        if (v != null) {
+          font.page = 1;
+          font.sort = $(`[data-jd-pointer="text-fontsort"]`).val();
+          font.category = $(`[data-jd-pointer="text-fontcategory"]`).val();
+          font.language = $(`[data-jd-pointer="text-fontlanguage"]`).val();
+          font.keyword = $(`[data-jd-pointer="text-fontkeyword"]`).val();
+          var settings = {
+            url: `https://www.googleapis.com/webfonts/v1/webfonts?key=${encodeURIComponent(
+              font.key
+            )}&sort=${encodeURIComponent(
+              font.sort
+            )}`,
+            method: "GET",
+            timeout: 0,
+            processData: false,
+            contentType: false,
+          };
+
+          $.ajax(settings).done(function (response) {
+            let d = '';
+            $.each(response.items, function(i, v){
+              if(String(response.items[i].family).toLowerCase().includes(String(font.keyword).toLowerCase()) && ((font.language.length == 0)?true:(response.items[i].subsets).includes(font.language)) && ((font.category.length == 0)?true:(response.items[i].category).includes(font.category))){
+                d += `{"family": "'${response.items[i].family}', ${(response.items[i].category == 'handwriting' || response.items[i].category == 'display')?'cursive':response.items[i].category}", "source": "https://fonts.googleapis.com/css?family=${String(response.items[i].family).replace(' ', '+')}&display=swap"},`;  
+              }            });
+            d = `[${d.substring(0, d.length - 1)}]`;
+            font.items = JSON.parse(`${d}`);
+            console.log(font.items.length);
+            $(`[data-jd-class="action-text-fontlist"]`).html('');
+              for (var i = 0; i < ((font.items.length > 20)?20:font.items.length); i++) {
+                          let fontid = `font-${String(
+                            font.items[i].family
+                          ).replace(/[^0-9a-zA-Z]/gi, "")}`;
+                          if ($(`#${fontid}`).length == 0) {
+                            $("head").append(
+                              `<link id="${fontid}" href="${
+                                font.items[i].source
+                              }" rel="stylesheet">`
+                            );
+                          }
+                          let t = decodeURIComponent($(`[data-jd-class="action-text-fontlist"]`).attr('data-jd-template')).replace(/\$\{font\.attr\}/g, `data-jd-class="input-click" data-jd-pointer="text-font" data-jd-value="${encodeURIComponent(JSON.stringify(font.items[i]))}"`).replace(/\$\{font\.preview\}/g, `<span style="font-family: ${font.items[i].family}">${data.display.element[data.display.key].layer[render.layer].text.write}</span>`);
+                          $(`[data-jd-class="action-text-fontlist"]`).append(t);
+                          (i==19)?$(`[data-jd-pointer="text-fontnext"]`).css("display","initial"):$(`[data-jd-pointer="text-fontnext"]`).css("display","none");
+                        }
+
+          });
+        }
+      },
+    },
+    {
+      pointer: "text-fontnext",
+      event: (v = null) => {
+        if (v != null) {
+          font.page += 1;
+          for (var i = ((font.page-1)*20); i < ((font.page)*20); i++) {
+                      let fontid = `font-${String(
+                        font.items[i].family
+                      ).replace(/[^0-9a-zA-Z]/gi, "")}`;
+                      if ($(`#${fontid}`).length == 0) {
+                        $("head").append(
+                          `<link id="${fontid}" href="${
+                            font.items[i].source
+                          }" rel="stylesheet">`
+                        );
+                      }
+                      let t = decodeURIComponent($(`[data-jd-class="action-text-fontlist"]`).attr('data-jd-template')).replace(/\$\{font\.attr\}/g, `data-jd-class="input-click" data-jd-pointer="text-font" data-jd-value="${encodeURIComponent(JSON.stringify(font.items[i]))}"`).replace(/\$\{font\.preview\}/g, `<span style="font-family: ${font.items[i].family}">${data.display.element[data.display.key].layer[render.layer].text.write}</span>`);
+                      $(`[data-jd-class="action-text-fontlist"]`).append(t);
+                      (i==((font.page)*20)-1)?$(`[data-jd-pointer="text-fontnext"]`).css("display","initial"):$(`[data-jd-pointer="text-fontnext"]`).css("display","none");
+                    }
         }
       },
     },
@@ -998,7 +1086,7 @@ let jdesign = function (config) {
         }
       },
     },
-    // -dev
+    
     {
       pointer: "image-selectpixabaykeyword",
       event: (v = null) => {
@@ -1974,17 +2062,100 @@ let jdesign = function (config) {
       },
     },
     {
-      pointer: "layer-pos",
+      pointer: "element-layer",
       event: (v = null) => {
+        // -dev
         if (v != null) {
+          let t = JSON.parse(`${JSON.stringify(data.display.element[data.display.key].layer)}`);
           switch (v) {
             case "up":
+              data.display.element[data.display.key].layer = JSON.parse(`${JSON.stringify(render.arrmov(t, render.layer, render.layer+1))}`);
+              render.layer += 1;
               break;
             case "down":
+              data.display.element[data.display.key].layer = JSON.parse(`${JSON.stringify(render.arrmov(t, render.layer, render.layer-1))}`);
+              render.layer -= 1;
+              break;
+            case "copy":
+              t.push(JSON.parse(`${JSON.stringify(data.display.element[data.display.key].layer[render.layer])}`));
+              data.display.element[data.display.key].layer = JSON.parse(`${JSON.stringify(t)}`);
+              render.layer = data.display.element[data.display.key].layer.length-1;
+              break;
+            case "reset":
+              data.display.element[data.display.key].layer[render.layer] = (data.display.element[data.display.key].layer[render.layer].type == "text")?JSON.parse(`${JSON.stringify(raw.text)}`):JSON.parse(`${JSON.stringify(raw.image)}`);
+              break;
+            case "delete":
+              t.splice(render.layer, 1);
+              data.display.element[data.display.key].layer = JSON.parse(`${JSON.stringify(t)}`);
+              $(`[data-jd-class="action"]`).css("display", "none");
+              $(`[data-jd-class="action"]`).first().css("display", "block");
               break;
           }
+          render.all();
+          
         }
       },
+    },
+    {
+      pointer: "element-export",
+      event: (v = null) => {
+        if (v != null) {
+          console.log("export");
+          const filename = 'element.json';
+          const jsonStr = JSON.stringify(data.display.element[data.display.key].layer);
+
+          let element = document.createElement('a');
+          element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
+          element.setAttribute('download', filename);
+
+          element.style.display = 'none';
+          document.body.appendChild(element);
+
+          element.click();
+
+          document.body.removeChild(element);
+        }
+      }
+    },
+    {
+      pointer: "element-import",
+      event: (v = null) => {
+        if (v != null) {
+          var files = document.querySelector(
+            `[data-jd-pointer='element-import']`
+          ).files;
+          if (files.length <= 0) {
+            return false;
+          }
+
+          var fr = new FileReader();
+
+          fr.onload = function(e) { 
+            var r = e.target.result;
+            let od = JSON.stringify(data.display.element[data.display.key].layer);
+            od = od.substring(0, od.length - 1);
+            let nd =
+              data.display.element[data.display.key].layer.length == 0
+              ? String(decodeURIComponent(r)).replace("[", "")
+              : String(decodeURIComponent(r)).replace("[", ",");
+            let d = od + nd;
+            data.display.element[data.display.key].layer = JSON.parse(`${d}`);
+            render.all();
+          }
+
+          fr.readAsText(files.item(0));
+
+        }
+      }
+    },
+    {
+      pointer: "element-delete",
+      event: (v = null) => {
+        if (v != null) {
+          data.display.element[data.display.key].layer = [];
+          render.all();
+        }
+      }
     },
     {
       pointer: "color",
@@ -2010,6 +2181,16 @@ let jdesign = function (config) {
 
   let render = {
     layer: -1,
+    arrmov: ((arr, old_index, new_index) => {
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr;
+}),
     color: () => {
       $("#jd-canvas-color").css(
         "backgroundColor",
@@ -2604,18 +2785,6 @@ let jdesign = function (config) {
         $(`.jd-canvas-element-layer[data-canvas-element-layer="${n}"]`).css(
           css
         );
-
-        /* ((imgSrc) => {
-    var newImg = new Image();
-
-    newImg.onload = function() {
-      var height = newImg.height;
-      var width = newImg.width;
-      alert ('The image size is '+width+'*'+height);
-    }
-
-    newImg.src = imgSrc; // this must be done AFTER setting onload
-})(data.display.element[data.display.key].layer[n].src); */
       }
     },
     input: (i = null, v = null) => {
