@@ -37,6 +37,9 @@
   background-size: 100% 100%;
   text-align: center;
 }
+#jd-printable {
+  position: absolute;
+}
 [data-jd-class="action"],
 [data-jd-pointer="image-selectpixabaynext"],
 [data-jd-pointer="text-fontnext"] {

@@ -1,7 +1,7 @@
 let jdesign = function (config) {
   let raw = {
     data: JSON.parse(
-      `{"product":{"id":"1","name":"Tshirt lengan pendek","category":"Tshirt","spesification":{"weight":400,"size":["xs","s","m","x","xl","xxl"],"model":"combat 60s"},"color":{"main":"#fefefe","recommendation":["#ff0000","#00ff00","#0000ff"]}},"display":{"key":0,"position":[{"available":true,"image":{"bottom":"https://i.ibb.co/Q8QsZPf/tshirt-depan-min.jpg","top":"https://i.ibb.co/B3R5gbF/tshirt-depan.png"},"printable":{"top":"65","left":"95","width":"140","height":"212"}},{"available":true,"image":{"bottom":"","top":""},"printable":{"top":"65","left":"95","width":"140","height":"212"}},{"available":true,"image":{"bottom":"","top":""},"printable":{"top":"65","left":"95","width":"140","height":"212"}},{"available":true,"image":{"bottom":"","top":""},"printable":{"top":"65","left":"95","width":"140","height":"212"}},{"available":true,"image":{"bottom":"https://i.ibb.co/ZhQ9DmM/tshirt-belakang-min.jpg","top":"https://i.ibb.co/47P3zWX/tshirt-belakang.png"},"printable":{"top":"65","left":"95","width":"140","height":"212"}}],"element":[{"layer":[]},{"layer":[]},{"layer":[]},{"layer":[]},{"layer":[]}]}}`
+      `{"product":{"id":"1","name":"Tshirt lengan pendek","category":"Tshirt","spesification":{"weight":400,"size":["xs","s","m","x","xl","xxl"],"model":"combat 60s"},"color":{"main":"#fefefe","recommendation":["#ff0000","#00ff00","#0000ff"]}},"display":{"key":0,"position":[{"available":true,"image":{"bottom":"https://i.ibb.co/Q8QsZPf/tshirt-depan-min.jpg","top":"https://i.ibb.co/B3R5gbF/tshirt-depan.png"},"printable":{"top":"200","left":"300","width":"140","height":"212"}},{"available":false,"image":{"bottom":"","top":""},"printable":{"top":"65","left":"95","width":"140","height":"212"}},{"available":false,"image":{"bottom":"","top":""},"printable":{"top":"65","left":"95","width":"140","height":"212"}},{"available":false,"image":{"bottom":"","top":""},"printable":{"top":"65","left":"95","width":"140","height":"212"}},{"available":true,"image":{"bottom":"https://i.ibb.co/ZhQ9DmM/tshirt-belakang-min.jpg","top":"https://i.ibb.co/47P3zWX/tshirt-belakang.png"},"printable":{"top":"65","left":"95","width":"140","height":"212"}}],"element":[{"layer":[]},{"layer":[]},{"layer":[]},{"layer":[]},{"layer":[]}]}}`
     ),
     text: JSON.parse(
       `{"type":"text","text":{"write":"Text","align":"center","bold":false,"underline":false,"italic":false},"font":{"family":"","source":""},"size":{"fontsize":75,"letterspacing":0,"lineheight":100},"position":{"top":350,"left":372},"transform":{"rotate":0,"skew":0,"flip":{"vertical":false,"horizontal":false}},"color":{"background":{"type":"normal","main":["#000000"],"poslinear":0,"posradialx":50,"posradialy":50},"opacity":"100"},"effect":{"stroke":{"width":0,"color":"#000000"},"depth":{"type":0,"width":0,"color":"#000000"},"curve":{"type":0,"round":300, "degree": 75},"outline":{"width":0,"color":"#000000"}},"shadow":{"blur":0,"color":"#000000","posx":0,"posy":0}}`
@@ -47,13 +47,16 @@ let jdesign = function (config) {
       event: (v = null) => {
         if (v != null) {
           let d = JSON.parse(decodeURIComponent(v));
-          let e = `${JSON.stringify(data.display.element[data.display.key])}`;
+          let e = `${JSON.stringify(data.display.element[data.display.key].layer)}`;
           data.product = JSON.parse(`${JSON.stringify(d.product)}`);
           data.display.key = d.display.key;
           data.display.position = JSON.parse(
             `${JSON.stringify(d.display.position)}`
           );
-          data.display.element[data.display.key] = JSON.parse(`${e}`);
+          $.each(data.display.element, function(i, v){
+            data.display.element[i].layer = [];
+          });
+          data.display.element[data.display.key].layer = JSON.parse(`${e}`);
           render.all();
         }
       },
@@ -285,23 +288,22 @@ let jdesign = function (config) {
               }            });
             d = `[${d.substring(0, d.length - 1)}]`;
             font.items = JSON.parse(`${d}`);
-            console.log(font.items.length);
             $(`[data-jd-class="action-text-fontlist"]`).html('');
-              for (var i = 0; i < ((font.items.length > 20)?20:font.items.length); i++) {
-                          let fontid = `font-${String(
-                            font.items[i].family
-                          ).replace(/[^0-9a-zA-Z]/gi, "")}`;
-                          if ($(`#${fontid}`).length == 0) {
-                            $("head").append(
-                              `<link id="${fontid}" href="${
-                                font.items[i].source
-                              }" rel="stylesheet">`
-                            );
-                          }
-                          let t = decodeURIComponent($(`[data-jd-class="action-text-fontlist"]`).attr('data-jd-template')).replace(/\$\{font\.attr\}/g, `data-jd-class="input-click" data-jd-pointer="text-font" data-jd-value="${encodeURIComponent(JSON.stringify(font.items[i]))}"`).replace(/\$\{font\.preview\}/g, `<span style="font-family: ${font.items[i].family}">${data.display.element[data.display.key].layer[render.layer].text.write}</span>`);
-                          $(`[data-jd-class="action-text-fontlist"]`).append(t);
-                          (i==19)?$(`[data-jd-pointer="text-fontnext"]`).css("display","initial"):$(`[data-jd-pointer="text-fontnext"]`).css("display","none");
+            for (var i = 0; i < ((font.items.length > 20)?20:font.items.length); i++) {
+                        let fontid = `font-${String(
+                          font.items[i].family
+                        ).replace(/[^0-9a-zA-Z]/gi, "")}`;
+                        if ($(`#${fontid}`).length == 0) {
+                          $("head").append(
+                            `<link id="${fontid}" href="${
+                              font.items[i].source
+                            }" rel="stylesheet">`
+                          );
                         }
+                        let t = decodeURIComponent($(`[data-jd-class="action-text-fontlist"]`).attr('data-jd-template')).replace(/\$\{font\.attr\}/g, `data-jd-class="input-click" data-jd-pointer="text-font" data-jd-value="${encodeURIComponent(JSON.stringify(font.items[i]))}"`).replace(/\$\{font\.preview\}/g, `<span style="font-family: ${font.items[i].family}">${data.display.element[data.display.key].layer[render.layer].text.write}</span>`);
+                        $(`[data-jd-class="action-text-fontlist"]`).append(t);
+                        (i==19)?$(`[data-jd-pointer="text-fontnext"]`).css("display","initial"):$(`[data-jd-pointer="text-fontnext"]`).css("display","none");
+                      }
 
           });
         }
@@ -1049,10 +1051,12 @@ let jdesign = function (config) {
                   `.jd-canvas-element-layer[data-canvas-element-layer="${render.layer}"]`
                 ).html(``);
                 render.elementLayer(render.layer);
+                render.unredo.store(data);
               };
               newImg.src = imgSrc;
             })(data.display.element[data.display.key].layer[render.layer].src);
           });
+          $(`[data-jd-pointer='image-selectupload']`).val(null);
         }
       },
     },
@@ -1060,7 +1064,6 @@ let jdesign = function (config) {
       pointer: "image-selectimport",
       event: (v = null) => {
         if (v != null) {
-          console.log(v);
           $(
             `.jd-canvas-element-layer[data-canvas-element-layer="${render.layer}"]`
           )
@@ -1115,7 +1118,6 @@ let jdesign = function (config) {
       pointer: "image-selectpixabaysearch",
       event: (v = null, p = 1) => {
         if (v != null) {
-          console.log(pixabay);
           pixabay.page = 1;
           var settings = {
             url: `https://pixabay.com/api/?key=${encodeURIComponent(
@@ -1244,7 +1246,6 @@ let jdesign = function (config) {
           };
 
           $.ajax(settings).done(function (response) {
-            console.log(response);
             var jx = response; //JSON.parse(response);
             data.display.element[data.display.key].layer[render.layer].src =
               jx.data.url;
@@ -1265,7 +1266,6 @@ let jdesign = function (config) {
               newImg.src = imgSrc;
             })(data.display.element[data.display.key].layer[render.layer].src);
           });
-          console.log(v);
         }
       },
     },
@@ -2064,7 +2064,7 @@ let jdesign = function (config) {
     {
       pointer: "element-layer",
       event: (v = null) => {
-        // -dev
+        
         if (v != null) {
           let t = JSON.parse(`${JSON.stringify(data.display.element[data.display.key].layer)}`);
           switch (v) {
@@ -2100,7 +2100,6 @@ let jdesign = function (config) {
       pointer: "element-export",
       event: (v = null) => {
         if (v != null) {
-          console.log("export");
           const filename = 'element.json';
           const jsonStr = JSON.stringify(data.display.element[data.display.key].layer);
 
@@ -2141,9 +2140,11 @@ let jdesign = function (config) {
             let d = od + nd;
             data.display.element[data.display.key].layer = JSON.parse(`${d}`);
             render.all();
+            render.unredo.store(data);
           }
 
           fr.readAsText(files.item(0));
+          $(`[data-jd-pointer='element-import']`).val(null);
 
         }
       }
@@ -2158,11 +2159,57 @@ let jdesign = function (config) {
       }
     },
     {
+      pointer: "unredo",
+      event: (v = null) => {
+        if (v != null) {
+          switch(v){
+            case 'undo':
+            render.unredo.key -= 1;
+            data = JSON.parse(`${JSON.stringify(render.unredo.data[render.unredo.key])}`);
+            render.all();
+            break;
+            case 'redo':
+            render.unredo.key += 1;
+            data = JSON.parse(`${JSON.stringify(render.unredo.data[render.unredo.key])}`);
+            render.all();
+            break;
+          }
+        }
+      }
+    },
+    {
+      pointer: "position",
+      event: (v = null) => {
+        if (v != null) {
+          data.display.key = Number(v);
+          render.all();
+        }
+        $.each(data.display.position, function(i, v){
+          if (data.display.position[i].available) {
+            $(`[data-jd-pointer='position'][data-jd-value='${i}']`).css("display", "initial");
+          }
+          else{
+            $(`[data-jd-pointer='position'][data-jd-value='${i}']`).css("display", "none");
+          }
+        });
+      }
+    },
+    {
+      pointer: "printable",
+      event: (v = null) => {
+        if (v != null) {
+          render.printable.mode = (render.printable.mode)?false:true;
+          render.all();
+        }
+      }
+    },
+    {
       pointer: "color",
       event: (v = null) => {
         if (v != null) {
           data.product.color.main = v;
           render.color();
+          render.printable.render();
         }
 
         $(`[data-jd-pointer='color']`).attr(
@@ -2213,6 +2260,34 @@ let jdesign = function (config) {
         "backgroundImage",
         `url('${data.display.position[data.display.key].image.top}')`
       );
+    },
+    printable: {
+      mode: true,
+      render: () =>{
+        console.log(`1px solid ${render.colorinvert(data.product.color.main)}`);
+        $(`#jd-printable`).css({display:`${(render.printable.mode)?"block":"none"}`, width: `${data.display.position[data.display.key].printable.width}px`, height:`${data.display.position[data.display.key].printable.height}px`, border: `1px solid ${render.colorinvert(data.product.color.main)}`, left: `${data.display.position[data.display.key].printable.left}px`, top:`${data.display.position[data.display.key].printable.top}px`});
+      }
+    },
+    unredo: {
+      key: -1,
+      data: [],
+      store: (d) => {
+        // -dev
+        let t = (JSON.stringify(render.unredo.data[render.unredo.key]) != JSON.stringify(d));
+        if(JSON.stringify(render.unredo.data[render.unredo.key]) != JSON.stringify(d)){
+          render.unredo.key += 1;
+          render.unredo.data.splice(render.unredo.key, render.unredo.data.length-render.unredo.key);
+          let od = JSON.stringify(render.unredo.data);
+          od = (render.unredo.data.length == 0)?od.substring(0, od.length - 1):od.substring(0, od.length - 1)+",";
+          nd = od+JSON.stringify(d)+"]";
+          render.unredo.data = JSON.parse(`${nd}`);
+        }
+        render.unredo.render();
+      },
+      render: () =>{
+        (render.unredo.key <= 0)?$(`[data-jd-pointer="unredo"][data-jd-value="undo"]`).css("display", "none"):$(`[data-jd-pointer="unredo"][data-jd-value="undo"]`).css("display", "initial");
+        (render.unredo.key == render.unredo.data.length-1)?$(`[data-jd-pointer="unredo"][data-jd-value="redo"]`).css("display", "none"):$(`[data-jd-pointer="unredo"][data-jd-value="redo"]`).css("display", "initial");
+      }
     },
     element: () => {
       $("#jd-canvas-element").html("");
@@ -2809,6 +2884,8 @@ let jdesign = function (config) {
       render.position();
       render.element();
       render.input();
+      render.unredo.render();
+      render.printable.render();
     },
   };
 
@@ -2821,6 +2898,7 @@ let jdesign = function (config) {
             <div id="jd-canvas-bottom" class="jd-canvas" style="mix-blend-mode: multiply;"></div>
             <div id="jd-canvas-top" class="jd-canvas"></div>
           </div>
+          <div id="jd-printable"></div>
 			`);
     let canvaswidth = $("#jd-main").width();
     $("#jd-canvas").css({
@@ -2838,6 +2916,7 @@ let jdesign = function (config) {
     });
     $(`[data-jd-class="action"]`).css("display", "none");
     $(`[data-jd-class="action"]`).first().css("display", "block");
+    render.unredo.store(data);
     render.all();
   })();
 
@@ -2866,6 +2945,7 @@ let jdesign = function (config) {
       let i = this.getAttribute("data-jd-pointer");
       let v = this.getAttribute("data-jd-value");
       render.input(i, v);
+      render.unredo.store(data);
     });
   })();
   (() => {
@@ -2886,15 +2966,7 @@ let jdesign = function (config) {
       let i = this.getAttribute("data-jd-pointer");
       let v = this.getAttribute("data-jd-value");
       render.input(i, v);
-    });
-  })();
-  (() => {
-    $(document).on("change", ".custom-file-input", function () {
-      var fileName = $(this).val().split("\\").pop();
-      $(this)
-        .siblings(".custom-file-label")
-        .addClass("selected")
-        .html(fileName);
+      render.unredo.store(data);
     });
   })();
 };
