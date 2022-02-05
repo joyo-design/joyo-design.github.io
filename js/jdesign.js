@@ -1559,7 +1559,9 @@ let jdesign = function (config) {
         data.display.element[data.display.key].layer[render.layer].color
           .background.type != "normal" &&
         data.display.element[data.display.key].layer[render.layer].color
-          .background.type != "same-parent"
+          .background.type != "same-parent" &&
+            data.display.element[data.display.key].layer[render.layer].color
+              .background.type != "none"
           ? $(`[data-jd-pointer='image-coloradd']`).css({
               display: "block",
             })

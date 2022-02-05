@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		body{
+			padding-top: 500px;
+			padding-left: 500px;
+		}
+#jd-main{
+	position: relative;
+	font-size: 1000px;
+	width: 1000px;
+	padding-bottom: 1000px;
+	border: 1px solid red;
+}
+#jd-canvas{
+	position: absolute;
+	width: 1000px;
+	height: 1000px;
+	border: 1px solid blue;
+	font-size: 1000px;
+}
+#jd-wrap{
+	position: absolute;
+	width: 1000px;
+	height: 1000px;
+	border: 1px solid green;
+	transform: scale(2.5);
+	top: 250px;
+	font-size: 1000px;
+	left: -25px;
+}
+#jd-print{
+	position: absolute;
+	width: 400px;
+	height: 500px;
+	border: 1px solid grey;
+	top: 200px;
+	left: 310px;
+}
+		
+
+	</style>
+
+</head>
+<body>
+	<div style="height: 1000px"></div>
+<div id="jd-main">
+	<div id="jd-canvas">
+		<div id="jd-wrap">
+			<div id="jd-print"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
