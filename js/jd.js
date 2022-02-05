@@ -17,7 +17,7 @@ let jdesign = function (newdata = null) {
 
   const variable = {
     layer: -1,
-    printable: true,
+    printable: false,
     action: {
       active: ``,
       temporary: ``
@@ -1423,7 +1423,7 @@ let jdesign = function (newdata = null) {
       $(`#jd-canvas`).attr(`style`, ``);
       $(`#jd-wrap`).attr(`style`, ``);
       $(`#jd-main`).css({paddingBottom: `100%`});
-      
+
       if(variable.canvas.designmode){
         $(`#jd-main`).wrapInner(`<div id="jd-wrap"></div>`);
         $(`#jd-wrap`).css(css);
