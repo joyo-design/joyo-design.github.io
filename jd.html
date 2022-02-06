@@ -2348,13 +2348,14 @@
             <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="unredo" data-jd-value="redo">Redo</button>
             <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="printable">area</button>
           </div>
-          <div
-            class="btn-group"
-            role="group"
-            aria-label="Basic example"
-          >
-          <!----dev------->
-            <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="mode">mode</button></div>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Mode</button>
+            <div class="dropdown-menu">
+              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="mode" data-jd-value="mockup">Mockup</button>
+              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="mode" data-jd-value="zoom">Zoom</button>
+              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="mode" data-jd-value="raw">Raw</button>
+            </div>
+          </div>
           <div class="dropdown">
             <button
               class="jd-save btn btn-secondary dropdown-toggle"
@@ -2402,7 +2403,7 @@
     <script src="js/jd.js"></script>
     <script type="text/javascript">
       let jd = new jdesign();
-      // jd.designmode();
+      jd.mode(`zoom`);
 
       jd.position(0);
       jd.create();

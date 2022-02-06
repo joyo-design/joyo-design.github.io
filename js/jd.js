@@ -62,8 +62,8 @@ let jdesign = function (newdata = null) {
     },
     canvas: {
       width: jd.class(`main`).width(),
-      html: `<div id="jd-canvas"><div id="jd-canvas-color" class="jd-canvas"></div><div id="jd-canvas-element" class="jd-canvas"></div><div id="jd-canvas-bottom" class="jd-canvas" style="mix-blend-mode: multiply;"></div><div id="jd-canvas-top" class="jd-canvas"></div><div id="jd-printable"></div></div>`,
-      designmode: false
+      html: `<div id="jd-wrap"><div id="jd-canvas"><div id="jd-canvas-color" class="jd-canvas"></div><div id="jd-canvas-element" class="jd-canvas"></div><div id="jd-canvas-bottom" class="jd-canvas" style="mix-blend-mode: multiply;"></div><div id="jd-canvas-top" class="jd-canvas"></div><div id="jd-printable"></div></div></div>`,
+      mode: `mockup`
     }
   }
 
@@ -392,9 +392,9 @@ let jdesign = function (newdata = null) {
     },
     {
       pointer: "mode",
-      value: (v = null) => {
-        variable.canvas.designmode = (variable.canvas.designmode)?false:true;
-        canvas.designmode();
+      value: (v) => {
+        variable.canvas.mode = v;
+        canvas.mode();
       }
     },
     {
@@ -1414,33 +1414,32 @@ let jdesign = function (newdata = null) {
   }
 
   const canvas = {
-    designmode:()=>{
-      const css = {
+    mode:()=>{
+      const cssmain = {
+        paddingBottom: `${(variable.canvas.mode == `mockup`)?`100%`:`${(variable.canvas.width*data.display.position[data.display.key].printable.height)/data.display.position[data.display.key].printable.width}px`}`
+      }
+      const csswrap = {
         transform: `scale(${variable.canvas.width / 1000})`,
         top: `${Number(variable.canvas.width / 1000) <= 1? "-" + Number((1 - Number(variable.canvas.width / 1000)) / 2): Number((1 - Number(variable.canvas.width / 1000)) / 2) * -1}em`,
         left: `${Number(variable.canvas.width / 1000) <= 1? "-" + Number((1 - Number(variable.canvas.width / 1000)) / 2): Number((1 - Number(variable.canvas.width / 1000)) / 2) * -1}em`,
       }
-      $(`#jd-canvas`).attr(`style`, ``);
-      $(`#jd-wrap`).attr(`style`, ``);
-      $(`#jd-main`).css({paddingBottom: `100%`});
-
-      if(variable.canvas.designmode){
-        $(`#jd-main`).wrapInner(`<div id="jd-wrap"></div>`);
-        $(`#jd-wrap`).css(css);
+      const csscanvas = ()=>{
+        $(`#jd-canvas`).attr(`style`, ``);
         const scale = 1000/data.display.position[data.display.key].printable.width;
-        console.log((variable.canvas.width*data.display.position[data.display.key].printable.height)/data.display.position[data.display.key].printable.width);
-        $(`#jd-canvas`).css({
+        const css = {
           transform: `scale(${scale})`,
           top: `${((scale*1000/2)-500)-(scale*data.display.position[data.display.key].printable.top)}px`,
           left: `${((scale*1000/2)-500)-(scale*data.display.position[data.display.key].printable.left)}px`
-        });
-        $(`#jd-main`).css({
-          paddingBottom: `${(variable.canvas.width*data.display.position[data.display.key].printable.height)/data.display.position[data.display.key].printable.width}px`
-        });
+        }
+        return (variable.canvas.mode != `mockup`)?css:JSON.parse(`{}`);
       }
-      else{
-        $(`#jd-canvas`).css(css);
+      const csszoom = {
+        display: `${(variable.canvas.mode == "raw")?"none":"initial"}`
       }
+      $(`#jd-main`).css(cssmain);
+      $(`#jd-wrap`).css(csswrap);
+      $(`#jd-canvas`).css(csscanvas());
+      $(`#jd-canvas-top, #jd-canvas-bottom, #jd-canvas-color`).css(csszoom);
     },
     color:()=>{
       $("#jd-canvas-color").css("backgroundColor",`${data.product.color.main}`);
@@ -1650,6 +1649,7 @@ let jdesign = function (newdata = null) {
       }
     },
     render:()=>{
+      canvas.mode();
       canvas.color();
       canvas.position();
       canvas.printable();
@@ -1664,7 +1664,6 @@ let jdesign = function (newdata = null) {
   const init = {
     canvas:()=>{
       jd.class(`main`).attr("id", "jd-main").html(variable.canvas.html);
-      canvas.designmode();
     },
     action:()=>{
       variable.action.active = jd.class(`action`).first().attr('data-jd-value');
@@ -1749,8 +1748,8 @@ let jdesign = function (newdata = null) {
     position:(v)=>{
       data.display.key = v;
     },
-    designmode:(v = true)=>{
-      variable.canvas.designmode = v;
+    mode:(v = `mockup`)=>{
+      variable.canvas.mode = v;
     },
     create:()=>{
       init.canvas();
