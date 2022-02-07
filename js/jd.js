@@ -160,7 +160,7 @@ let jdesign = function (newdata = null) {
     capture:()=>{
       $.each(variable.capture.mockup.url, (i, v)=>{
         const settings = {
-          url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://shot.screenshotapi.net/screenshot?token=ND4Z2BY-PKC4DPN-KQC2WWX-SZWMRMW&url=${encodeURIComponent(v)}&full_page=true&fresh=true&output=image&file_type=png&wait_for_event=load`)}`,
+          url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://shot.screenshotapi.net/screenshot?token=ND4Z2BY-PKC4DPN-KQC2WWX-SZWMRMW&url=${encodeURIComponent(v)}&width=1000&full_page=true&fresh=true&output=image&file_type=png&wait_for_event=load`)}`,
           method: "GET",
           timeout: 0,
           processData: false,
@@ -172,7 +172,7 @@ let jdesign = function (newdata = null) {
       });
       $.each(variable.capture.raw.url, (i, v)=>{
         const settings = {
-          url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://shot.screenshotapi.net/screenshot?token=ND4Z2BY-PKC4DPN-KQC2WWX-SZWMRMW&url=${encodeURIComponent(v)}&full_page=true&fresh=true&output=image&file_type=png&wait_for_event=load`)}`,
+          url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://shot.screenshotapi.net/screenshot?token=ND4Z2BY-PKC4DPN-KQC2WWX-SZWMRMW&url=${encodeURIComponent(v)}&width=1000&full_page=true&fresh=true&output=image&file_type=png&wait_for_event=load`)}`,
           method: "GET",
           timeout: 0,
           processData: false,
