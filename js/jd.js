@@ -35,6 +35,9 @@ let jdesign = function (newdata = null) {
     imgbb:{
       key: `3c71f86b78055de0ff6250ddf4432610`
     },
+    jsonbin:{
+      key: `$2b$10$oxu103sQk/NMxfBlFGRGx.Ltvt2GPgaTKW52z5UtqZS5TuJ4gLwRS`
+    },
     pixabay:{
       key: `17676215-53bfed5faba6b1cf924d69224`,
       page: 1,
@@ -50,6 +53,17 @@ let jdesign = function (newdata = null) {
       language: ``,
       keyword: ``,
       items: []
+    },
+    capture: {
+      status: false,
+      mockup: {
+        url: [],
+        data:[]
+      },
+      raw: {
+        url: [],
+        data:[]
+      }
     },
     imagerecent:{
       page: 1,
@@ -142,6 +156,32 @@ let jdesign = function (newdata = null) {
       v = v <= mn ? mn : v;
       v = v >= mx ? mx : v;
       return v;
+    },
+    capture:()=>{
+      $.each(variable.capture.mockup.url, (i, v)=>{
+        const settings = {
+          url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://shot.screenshotapi.net/screenshot?&url=${encodeURIComponent(v)}&output=image&file_type=png&wait_for_event=load`)}`,
+          method: "GET",
+          timeout: 0,
+          processData: false,
+        };
+
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+        });
+      });
+      $.each(variable.capture.raw.url, (i, v)=>{
+        const settings = {
+          url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://shot.screenshotapi.net/screenshot?&url=${encodeURIComponent(v)}&output=image&file_type=png&wait_for_event=load`)}`,
+          method: "GET",
+          timeout: 0,
+          processData: false,
+        };
+
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+        });
+      });
     },
     inputrender:(pointer,value, mn=null, mx=null)=>{
       
@@ -1386,6 +1426,40 @@ let jdesign = function (newdata = null) {
         method.inputrender(`image-roundbottomright`, data.display.element[data.display.key].layer[variable.layer].round.bottom.right, 0, 100);
       }
     },
+    {
+      pointer: "save",
+      value: (v=null) => {
+        let req = new XMLHttpRequest();
+
+        req.onreadystatechange = () => {
+          if (req.readyState == XMLHttpRequest.DONE) {
+            let id = JSON.parse(req.responseText).metadata.id;
+            variable.capture.status = false;
+            variable.capture.mockup.url = [];
+            variable.capture.raw.url = [];
+            $.each(data.display.position, (i, v)=>{
+              if (v.available) {
+                variable.capture.mockup.url.push(`https://joyo-design.github.io/capture.html?jsonbin_id=${id}&mode=mockup&position=${i}`);
+                if (data.display.element[i].layer.length != 0) {
+                  variable.capture.raw.url.push(`https://joyo-design.github.io/capture.html?jsonbin_id=${id}&mode=raw&position=${i}`);
+                }
+              }
+            });
+            console.log(variable.capture);
+            method.capture();
+          }
+        };
+          
+        req.open("POST", "https://api.jsonbin.io/v3/b", true);
+        req.setRequestHeader("Content-Type", "application/json");
+        req.setRequestHeader("X-Bin-Private", false);
+        req.setRequestHeader("X-Master-Key", `${variable.jsonbin.key}`);
+        req.send(JSON.stringify(data));
+      },
+      render:()=>{
+       
+      }
+    },
   ];
 
   const input = {
@@ -1743,6 +1817,9 @@ let jdesign = function (newdata = null) {
       }
       if(v.pixabay != undefined){
         variable.pixabay.key = v.pixabay;
+      }
+      if(v.jsonbin != undefined){
+        variable.jsonbin.key = v.jsonbin;
       }
     },
     position:(v)=>{

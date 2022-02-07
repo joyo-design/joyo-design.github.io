@@ -2356,28 +2356,9 @@
               <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="mode" data-jd-value="raw">Raw</button>
             </div>
           </div>
-          <div class="dropdown">
-            <button
-              class="jd-save btn btn-secondary dropdown-toggle"
-              type="button"
-              data-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Save
-            </button>
-            <div class="dropdown-menu" aria-labelledby="jdSave">
-              <form action="#" method="POST">
-                <input name="jd-id" type="hidden" />
-                <input name="jd-data" type="hidden" />
-                <input name="jd-mockup" type="hidden" />
-                <input name="jd-design" type="hidden" />
-                <input
-                  class="jd-save-as dropdown-item"
-                  type="submit"
-                  value="Form action"
-                />
-              </form>
-            </div>
+          <div class="btn-group" role="group" aria-label="Basic example" >
+          <!----dev------->
+            <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="save">Save</button>
           </div>
         </nav>
 
@@ -2403,9 +2384,6 @@
     <script src="js/jd.js"></script>
     <script type="text/javascript">
       let jd = new jdesign();
-      jd.mode(`zoom`);
-
-      jd.position(0);
       jd.create();
     </script>
 
