@@ -54,8 +54,9 @@ let jdesign = function (newdata = null) {
       keyword: ``,
       items: []
     },
-    capture: {
+    save: {
       status: false,
+      data: {},
       mockup: {
         url: [],
         data:[]
@@ -157,31 +158,92 @@ let jdesign = function (newdata = null) {
       v = v >= mx ? mx : v;
       return v;
     },
-    capture:()=>{
-      $.each(variable.capture.mockup.url, (i, v)=>{
+    saveas:(v)=>{
+      switch(v){
+        case `form`:
+          break;
+        case `mockup`:
+          $.each(variable.save.mockup.data, (i, val)=>{
+            const filename = `mockup-${i}.png`;
+            let element = document.createElement('a');
+            element.setAttribute('href', `${val}`);
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+          });
+          break;
+        case `raw`:
+          $.each(variable.save.raw.data, (i, val)=>{
+            const filename = `raw-${i}.png`;
+            let element = document.createElement('a');
+            element.setAttribute('href', `${val}`);
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+          });
+          break;
+        case `data`:
+          const filename = 'data.json';
+          const jsonStr = JSON.stringify(data);
+          let element = document.createElement('a');
+          element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
+          element.setAttribute('download', filename);
+          element.style.display = 'none';
+          document.body.appendChild(element);
+          element.click();
+          document.body.removeChild(element);
+          break;
+      }
+      console.log(v+" final save");
+    },
+    save:(v)=>{
+      $.each(variable.save.mockup.url, (i, val)=>{
         const settings = {
-          url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://api.apiflash.com/v1/urltoimage?access_key=fa77a505771845de93e2fe615b77f40e&url=${encodeURIComponent(v)}&format=png&width=1000&fresh=true&full_page=true&response_type=image&transparent=true&wait_until=network_idle`)}`,
+          url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://api.apiflash.com/v1/urltoimage?access_key=fa77a505771845de93e2fe615b77f40e&url=${encodeURIComponent(val)}&format=png&width=1000&height=1000&fresh=true&full_page=true&response_type=image&transparent=true&wait_until=network_idle`)}`,
           method: "GET",
           timeout: 0,
           processData: false,
         };
 
         $.ajax(settings).done(function (response) {
+          variable.save.mockup.data.push(response.data.url);
+          variable.save.status = (variable.save.mockup.url.length+variable.save.mockup.url.length == variable.save.mockup.data.length+variable.save.mockup.data.length)?true:false;
           console.log(response);
+          if(variable.save.status){
+            method.saveas(v);
+          }
+          
         });
       });
-      $.each(variable.capture.raw.url, (i, v)=>{
+      $.each(variable.save.raw.url, (i, val)=>{
         const settings = {
-          url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://api.apiflash.com/v1/urltoimage?access_key=fa77a505771845de93e2fe615b77f40e&url=${encodeURIComponent(v)}&format=png&width=1000&fresh=true&full_page=true&response_type=image&transparent=true&wait_until=network_idle`)}`,
+          url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://api.apiflash.com/v1/urltoimage?access_key=fa77a505771845de93e2fe615b77f40e&url=${encodeURIComponent(val)}&format=png&width=1000&fresh=true&full_page=true&response_type=image&transparent=true&wait_until=network_idle`)}`,
           method: "GET",
           timeout: 0,
           processData: false,
         };
 
         $.ajax(settings).done(function (response) {
+          variable.save.raw.data.push(response.data.url);
+          variable.save.status = (variable.save.mockup.url.length+variable.save.mockup.url.length == variable.save.mockup.data.length+variable.save.mockup.data.length)?true:false;
           console.log(response);
+          if(variable.save.status){
+            method.saveas(v);
+          }
         });
       });
+    },
+    savedata:(v = null)=>{
+      if (v==null) {
+        return (JSON.stringify(variable.save.data) == JSON.stringify(data))?true:false;
+      }
+      else{
+        variable.save.data = JSON.parse(`${JSON.stringify(v)}`);
+      }
     },
     inputrender:(pointer,value, mn=null, mx=null)=>{
       
@@ -1429,32 +1491,42 @@ let jdesign = function (newdata = null) {
     {
       pointer: "save",
       value: (v=null) => {
-        let req = new XMLHttpRequest();
-
-        req.onreadystatechange = () => {
-          if (req.readyState == XMLHttpRequest.DONE) {
-            let id = JSON.parse(req.responseText).metadata.id;
-            variable.capture.status = false;
-            variable.capture.mockup.url = [];
-            variable.capture.raw.url = [];
-            $.each(data.display.position, (i, v)=>{
-              if (v.available) {
-                variable.capture.mockup.url.push(`https://joyo-design.github.io/capture.html?jsonbin_id=${id}&mode=mockup&position=${i}`);
-                if (data.display.element[i].layer.length != 0) {
-                  variable.capture.raw.url.push(`https://joyo-design.github.io/capture.html?jsonbin_id=${id}&mode=raw&position=${i}`);
-                }
-              }
-            });
-            console.log(variable.capture);
-            method.capture();
-          }
-        };
+        console.log(method.savedata());
+        if (method.savedata() && variable.save.status) {
+          method.saveas(v);
+        }
+        else{
+          method.savedata(data);
+          variable.save.status = false;
+          variable.save.mockup.url = [];
+          variable.save.raw.url = [];
           
-        req.open("POST", "https://api.jsonbin.io/v3/b", true);
-        req.setRequestHeader("Content-Type", "application/json");
-        req.setRequestHeader("X-Bin-Private", false);
-        req.setRequestHeader("X-Master-Key", `${variable.jsonbin.key}`);
-        req.send(JSON.stringify(data));
+          let req = new XMLHttpRequest();
+          req.onreadystatechange = () => {
+            if (req.readyState == XMLHttpRequest.DONE) {
+              let id = JSON.parse(req.responseText).metadata.id;
+              $.each(data.display.position, (i, val)=>{
+                if (val.available) {
+                  variable.save.mockup.url.push(`https://joyo-design.github.io/capture.html?jsonbin_id=${id}&mode=mockup&position=${i}`);
+                  if (data.display.element[i].layer.length != 0) {
+                    variable.save.raw.url.push(`https://joyo-design.github.io/capture.html?jsonbin_id=${id}&mode=raw&position=${i}`);
+                  }
+                }
+              });
+              console.log(variable.save);
+              method.save(v);
+            }
+          };
+            
+          req.open("POST", "https://api.jsonbin.io/v3/b", true);
+          req.setRequestHeader("Content-Type", "application/json");
+          req.setRequestHeader("X-Bin-Private", false);
+          req.setRequestHeader("X-Master-Key", `${variable.jsonbin.key}`);
+          req.send(JSON.stringify(data));
+
+          
+        }
+        
       },
       render:()=>{
        

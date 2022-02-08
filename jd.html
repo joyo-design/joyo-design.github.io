@@ -2311,7 +2311,7 @@
           <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"
             >Toggle</a
           >
-          <div id="jd-position" class="dropdown">
+          <div class="dropdown">
             <button
               class="btn btn-secondary dropdown-toggle"
               type="button"
@@ -2320,7 +2320,7 @@
             >
               Position
             </button>
-            <div class="dropdown-menu" aria-labelledby="jd-position-dropdown">
+            <div class="dropdown-menu">
               <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="position" data-jd-value="0"
                 >Depan</button
               >
@@ -2359,6 +2359,15 @@
           <div class="btn-group" role="group" aria-label="Basic example" >
           <!----dev------->
             <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="save">Save</button>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" >Save</button>
+            <div class="dropdown-menu  dropdown-menu-right">
+              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="save" data-jd-value="form">send form</button>
+              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="save" data-jd-value="mockup">mockup image</button>
+              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="save" data-jd-value="raw">raw image</button>
+              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="save" data-jd-value="data">data</button>
+            </div>
           </div>
         </nav>
 
