@@ -1,61 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title></title>
-	<style type="text/css">
-		*{
-			margin: 0px;
-			padding: 0px;
-		}
-		body{
-			padding-top: 500px;
-			padding-left: 500px;
-		}
-#jd-main{
-	position: relative;
-	font-size: 1000px;
-	width: 1000px;
-	padding-bottom: 1000px;
-	border: 1px solid red;
-}
-#jd-canvas{
-	position: absolute;
-	width: 1000px;
-	height: 1000px;
-	border: 1px solid blue;
-	font-size: 1000px;
-}
-#jd-wrap{
-	position: absolute;
-	width: 1000px;
-	height: 1000px;
-	border: 1px solid green;
-	transform: scale(2.5);
-	top: 250px;
-	font-size: 1000px;
-	left: -25px;
-}
-#jd-print{
-	position: absolute;
-	width: 400px;
-	height: 500px;
-	border: 1px solid grey;
-	top: 200px;
-	left: 310px;
-}
-		
-
-	</style>
-
+      <title>How to download files using JavaScript</title>
 </head>
+
 <body>
-	<div style="height: 1000px"></div>
-<div id="jd-main">
-	<div id="jd-canvas">
-		<div id="jd-wrap">
-			<div id="jd-print"></div>
-		</div>
-	</div>
-</div>
+      <button onclick="download()">
+            Download Image
+      </button>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js">
+      </script>
+      <script>
+            function download() {
+                  axios({
+                        url: 'https://i.ibb.co/2Smnp7L/urltoimage-access-key-fa77a505771845de93e2fe615b77f40e-url-https-joyo-design-github-io-capture.jpg',
+                        method: 'GET',
+                        responseType: 'blob'
+                  })
+                        .then((response) => {
+                              const url = window.URL
+                                    .createObjectURL(new Blob([response.data]));
+                              const link = document.createElement('a');
+                              link.href = url;
+                              link.setAttribute('download', 'image.jpg');
+                              document.body.appendChild(link);
+                              link.click();
+                              document.body.removeChild(link);
+                        })
+            }
+
+      </script>
 </body>
+
 </html>

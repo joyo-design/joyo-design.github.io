@@ -32,6 +32,9 @@ let jdesign = function (newdata = null) {
       imageselectpixabaylist: `<img src="{preview}" class="img-thumbnail" style="max-width: 200px">`,
       imageselectrecentlist: `<img src="{preview}" class="img-thumbnail" style="max-width: 200px">`,
     },
+    apiflash:{
+      key: `fa77a505771845de93e2fe615b77f40e`
+    },
     imgbb:{
       key: `3c71f86b78055de0ff6250ddf4432610`
     },
@@ -55,8 +58,10 @@ let jdesign = function (newdata = null) {
       items: []
     },
     save: {
+      backup:0,
       status: false,
       data: {},
+      width:1000,
       mockup: {
         url: [],
         data:[]
@@ -158,83 +163,80 @@ let jdesign = function (newdata = null) {
       v = v >= mx ? mx : v;
       return v;
     },
-    saveas:(v)=>{
-      switch(v){
+    saveimage:(v, f)=>{
+      axios({
+            url: `${v}`,
+            method: 'GET',
+            responseType: 'blob'
+      })
+            .then((response) => {
+                  const url = window.URL
+                        .createObjectURL(new Blob([response.data]));
+                  const link = document.createElement('a');
+                  link.href = url;
+                  link.setAttribute('download', `${f}`);
+                  link.style.display = 'none';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+            })
+    },
+    
+    saveas:(f)=>{
+      jd.pointer(`save`).prop( "disabled", false);
+      switch(f){
         case `form`:
+
           break;
         case `mockup`:
-          $.each(variable.save.mockup.data, (i, val)=>{
-            const filename = `mockup-${i}.png`;
-            let element = document.createElement('a');
-            element.setAttribute('href', `${val}`);
-            element.setAttribute('download', filename);
-            element.style.display = 'none';
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
+          $.each(variable.save.mockup.data, (i, v)=>{
+            method.saveimage(v, `image-mockup-${i}.jpg`);
           });
           break;
         case `raw`:
-          $.each(variable.save.raw.data, (i, val)=>{
-            const filename = `raw-${i}.png`;
-            let element = document.createElement('a');
-            element.setAttribute('href', `${val}`);
-            element.setAttribute('download', filename);
-            element.style.display = 'none';
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
+          $.each(variable.save.raw.data, (i, v)=>{
+            method.saveimage(v, `image-raw-${i}.png`);
           });
           break;
         case `data`:
-          const filename = 'data.json';
-          const jsonStr = JSON.stringify(data);
-          let element = document.createElement('a');
-          element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
-          element.setAttribute('download', filename);
-          element.style.display = 'none';
-          document.body.appendChild(element);
-          element.click();
-          document.body.removeChild(element);
+          method.export(data, `data.json`);
           break;
       }
-      console.log(v+" final save");
     },
-    save:(v)=>{
-      $.each(variable.save.mockup.url, (i, val)=>{
-        const settings = {
-          url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://api.apiflash.com/v1/urltoimage?access_key=fa77a505771845de93e2fe615b77f40e&url=${encodeURIComponent(val)}&format=png&width=1000&height=1000&fresh=true&full_page=true&response_type=image&transparent=true&wait_until=network_idle`)}`,
-          method: "GET",
-          timeout: 0,
-          processData: false,
-        };
-
-        $.ajax(settings).done(function (response) {
-          variable.save.mockup.data.push(response.data.url);
-          variable.save.status = (variable.save.mockup.url.length+variable.save.mockup.url.length == variable.save.mockup.data.length+variable.save.mockup.data.length)?true:false;
-          console.log(response);
-          if(variable.save.status){
-            method.saveas(v);
+    saving:(t, v, f)=>{
+      const settings = {
+        url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://api.apiflash.com/v1/urltoimage?access_key=${variable.apiflash.key}&url=${encodeURIComponent(v.address)}&format=${(t=="mockup")?'jpeg':'png'}&width=${v.width}&height=${v.height}&fresh=true&full_page=true&response_type=image&transparent=true&wait_until=network_idle`)}`,
+        method: "GET",
+        timeout: 0,
+        processData: false,
+        error: ()=>{
+          if(variable.save.backup <= 20){
+            variable.save.backup += 1;
+            method.saving(t, v, f);
           }
-          
-        });
+          else{
+            console.log("Having error to capture product. try again");
+            jd.pointer(`save`).prop( "disabled", false);
+            }
+        }
+      };
+      $.ajax(settings).done(function (response) {
+        (t=='mockup')?variable.save.mockup.data.push(response.data.url):variable.save.raw.data.push(response.data.url);;
+        variable.save.status = (variable.save.mockup.url.length+variable.save.mockup.url.length == variable.save.mockup.data.length+variable.save.mockup.data.length)?true:false;
+        console.log(response);
+        if(variable.save.status){
+          method.saveas(f);
+        }
+        
       });
-      $.each(variable.save.raw.url, (i, val)=>{
-        const settings = {
-          url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://api.apiflash.com/v1/urltoimage?access_key=fa77a505771845de93e2fe615b77f40e&url=${encodeURIComponent(val)}&format=png&width=1000&fresh=true&full_page=true&response_type=image&transparent=true&wait_until=network_idle`)}`,
-          method: "GET",
-          timeout: 0,
-          processData: false,
-        };
-
-        $.ajax(settings).done(function (response) {
-          variable.save.raw.data.push(response.data.url);
-          variable.save.status = (variable.save.mockup.url.length+variable.save.mockup.url.length == variable.save.mockup.data.length+variable.save.mockup.data.length)?true:false;
-          console.log(response);
-          if(variable.save.status){
-            method.saveas(v);
-          }
-        });
+    },
+    save:(f)=>{
+      
+      $.each(variable.save.mockup.url, (i, v)=>{
+        method.saving("mockup", v, f);
+      });
+      $.each(variable.save.raw.url, (i, v)=>{
+        method.saving("raw", v, f);
       });
     },
     savedata:(v = null)=>{
@@ -244,6 +246,16 @@ let jdesign = function (newdata = null) {
       else{
         variable.save.data = JSON.parse(`${JSON.stringify(v)}`);
       }
+    },
+    export:(v, f)=>{
+      const jsonStr = JSON.stringify(v);
+      const element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
+      element.setAttribute('download', f);
+      element.style.display = 'none';
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
     },
     inputrender:(pointer,value, mn=null, mx=null)=>{
       
@@ -382,15 +394,8 @@ let jdesign = function (newdata = null) {
     {
       pointer: "element-export",
       value: (v=null) => {
-        const filename = 'element.json';
-        const jsonStr = JSON.stringify(data.display.element[data.display.key].layer);
-        let element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
-        element.setAttribute('download', filename);
-        element.style.display = 'none';
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
+        console.log(v);
+        method.export(data.display.element[data.display.key].layer, `element.json`);
       }
     },
     {
@@ -1134,7 +1139,6 @@ let jdesign = function (newdata = null) {
           (i==((variable.imagerecent.page)*20)-1)?jd.pointer(`image-selectrecentnext`).css({display: `initial`}):jd.pointer(`image-selectrecentnext`).css({display: `none`});        }
       }
     },
-    // dev
     {
       pointer: "image-positionx",
       value: (v) => {
@@ -1496,7 +1500,9 @@ let jdesign = function (newdata = null) {
           method.saveas(v);
         }
         else{
+          jd.pointer(`save`).prop( "disabled", true);
           method.savedata(data);
+          variable.save.backup = 0;
           variable.save.status = false;
           variable.save.mockup.url = [];
           variable.save.raw.url = [];
@@ -1505,15 +1511,19 @@ let jdesign = function (newdata = null) {
           req.onreadystatechange = () => {
             if (req.readyState == XMLHttpRequest.DONE) {
               let id = JSON.parse(req.responseText).metadata.id;
+              let mockupurl = ``;
+              let rawurl = ``;
               $.each(data.display.position, (i, val)=>{
                 if (val.available) {
-                  variable.save.mockup.url.push(`https://joyo-design.github.io/capture.html?jsonbin_id=${id}&mode=mockup&position=${i}`);
+                  mockupurl += `{"width":${variable.save.width}, "height":${variable.save.width}, "address": "https://joyo-design.github.io/capture.html?jsonbin_id=${id}&mode=mockup&position=${i}"},`
                   if (data.display.element[i].layer.length != 0) {
-                    variable.save.raw.url.push(`https://joyo-design.github.io/capture.html?jsonbin_id=${id}&mode=raw&position=${i}`);
+                    rawurl += `{"width":${variable.save.width}, "height":${(variable.save.width*val.printable.height)/val.printable.width}, "address": "https://joyo-design.github.io/capture.html?jsonbin_id=${id}&mode=raw&position=${i}"},`
                   }
                 }
               });
-              console.log(variable.save);
+              // dev
+              variable.save.mockup.url = JSON.parse(`[${mockupurl.substring(0, mockupurl.length - 1)}]`);
+              variable.save.raw.url = JSON.parse(`[${rawurl.substring(0, rawurl.length - 1)}]`);
               method.save(v);
             }
           };
@@ -1524,7 +1534,6 @@ let jdesign = function (newdata = null) {
           req.setRequestHeader("X-Master-Key", `${variable.jsonbin.key}`);
           req.send(JSON.stringify(data));
 
-          
         }
         
       },
@@ -1893,12 +1902,18 @@ let jdesign = function (newdata = null) {
       if(v.jsonbin != undefined){
         variable.jsonbin.key = v.jsonbin;
       }
+      if(v.apiflash != undefined){
+        variable.apiflash.key = v.apiflash;
+      }
     },
     position:(v)=>{
       data.display.key = v;
     },
     mode:(v = `mockup`)=>{
       variable.canvas.mode = v;
+    },
+    savewidth:(v=1000)=>{
+      variable.save.width = v;
     },
     create:()=>{
       init.canvas();
