@@ -20,6 +20,12 @@
   background-position: center center;
   background-size: 100% 100%;
 }
+#jd-wrap{
+  position: absolute;
+  font-size: 1000px;
+  width: 1000px;
+  height: 1000px;
+}
 .jd-canvas-element-text {
   position: absolute;
   white-space: nowrap;
@@ -37,11 +43,19 @@
   background-size: 100% 100%;
   text-align: center;
 }
+.jd-color-recommendation{
+  width: 2em;
+  height: 2em;
+  margin: 0.2em;
+  border: none;
+  border-radius: 50%;
+}
 #jd-printable {
   position: absolute;
 }
 [data-jd-class="action"],
 [data-jd-pointer="image-selectpixabaynext"],
+[data-jd-pointer="image-selectrecentnext"],
 [data-jd-pointer="text-fontnext"] {
   display: none;
 }
