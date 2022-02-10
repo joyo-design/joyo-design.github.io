@@ -1461,7 +1461,9 @@ let jdesign = function (newdata = null) {
           
           switch(v){
             case `form`:
+
               let form = variable.form;
+              console.log(form);
               form.data = `${JSON.stringify(data)}`;
               form.mockup = `${JSON.stringify(variable.save.mockup.data)}`;
               form.raw = `${JSON.stringify(variable.save.raw.data)}`;
@@ -1940,7 +1942,7 @@ let jdesign = function (newdata = null) {
     savewidth:(v=1000)=>{
       variable.save.width = v;
     },
-    form:(v)=>{
+    form:(v = {})=>{
         variable.form = v;
     },
     create:()=>{
