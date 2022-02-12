@@ -487,7 +487,7 @@ let jdesign = function (newdata = null) {
           let items = '';
           $.each(response.items, function(i, v){
             if(String(response.items[i].family).toLowerCase().includes(String(variable.font.keyword).toLowerCase()) && ((variable.font.language.length == 0)?true:(response.items[i].subsets).includes(variable.font.language)) && ((variable.font.category.length == 0)?true:(response.items[i].category).includes(variable.font.category))){
-              items += `{"family": "'${response.items[i].family}', ${(response.items[i].category == 'handwriting' || response.items[i].category == 'display')?'cursive':response.items[i].category}", "source": "https://fonts.googleapis.com/css?family=${String(response.items[i].family).replace(' ', '+')}&display=swap"},`;  
+              items += `{"family": "'${response.items[i].family}', ${(response.items[i].category == 'handwriting' || response.items[i].category == 'display')?'cursive':response.items[i].category}", "source": "https://fonts.googleapis.com/css?family=${String(response.items[i].family).replace(' ', '+')}&display=swap", "name":"${response.items[i].family}"},`;  
             }            
           });
           variable.font.items = JSON.parse(`[${items.substring(0, items.length - 1)}]`);
@@ -495,7 +495,7 @@ let jdesign = function (newdata = null) {
           let template = variable.template.textfontlist;
           for (var i = 0; i < ((variable.font.items.length > 20)?20:variable.font.items.length); i++) {
             method.font(variable.font.items[i].family, variable.font.items[i].source);
-            const preview = `<span style="font-family: ${variable.font.items[i].family}">${data.display.element[data.display.key].layer[variable.layer].text.write}</span>`;
+            const preview = `<span style="font-family: ${variable.font.items[i].family}">${variable.font.items[i].name}</span>`;
             const html = template.replace(/>/, ` data-jd-class="input-click" data-jd-pointer="text-font" data-jd-value="${encodeURIComponent(JSON.stringify(variable.font.items[i]))}">`).replace(/\{preview\}/g,`${preview}`);
             jd.class(`text-fontlist`).append(html);
             (i==19)?jd.pointer(`text-fontnext`).css({display: `initial`}):jd.pointer(`text-fontnext`).css({display: `none`});
@@ -510,7 +510,7 @@ let jdesign = function (newdata = null) {
         let template = variable.template.textfontlist;
         for (let i = ((variable.font.page-1)*20); i < ((variable.font.page)*20); i++) {
           method.font(variable.font.items[i].family, variable.font.items[i].source);
-          const preview = `<span style="font-family: ${variable.font.items[i].family}">${data.display.element[data.display.key].layer[variable.layer].text.write}</span>`;
+          const preview = `<span style="font-family: ${variable.font.items[i].family}">${variable.font.items[i].name}</span>`;
           const html = template.replace(/>/, ` data-jd-class="input-click" data-jd-pointer="text-font" data-jd-value="${encodeURIComponent(JSON.stringify(variable.font.items[i]))}">`).replace(/\{preview\}/g,`${preview}`);
           jd.class(`text-fontlist`).append(html);
           (i==((variable.font.page)*20)-1)?jd.pointer(`text-fontnext`).css({display: `initial`}):jd.pointer(`text-fontnext`).css({display: `none`});
