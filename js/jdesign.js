@@ -163,6 +163,7 @@ let jdesign = function (newdata = null) {
       return v;
     },
     export:(v, f)=>{
+    	alert("ff");
       const jsonStr = JSON.stringify(v);
       const element = document.createElement('a');
       element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
@@ -305,6 +306,36 @@ let jdesign = function (newdata = null) {
         }
         fr.readAsText(files.item(0));
         $(`[data-jd-pointer='element-import']`).val(null);
+      }
+    },
+    
+    {
+      pointer: "element-copy",
+      value: (v=null) => {
+        
+        
+        let od = JSON.stringify(data.display.element[data.display.key].layer);
+        
+          od = od.substring(0, od.length - 1);
+          
+          let d = JSON.stringify(data.display.element[v].layer);
+          
+          let nd =data.display.element[data.display.key].layer.length == 0? String(d).replace("[", ""): String(d).replace("[", ",");
+          alert(od + nd);
+          data.display.element[data.display.key].layer = JSON.parse(`${ od + nd}`);
+          canvas.render();
+        input.render();
+        
+      },
+      render:()=>{
+        $.each(data.display.element, function (index, value){
+        	if(data.display.element[index].layer.length == 0 || data.display.key == index){
+        	jd.pointer('element-copy').eq(index).css({"display":"none"});
+        	}
+        else{
+        	jd.pointer('element-copy').eq(index).css({"display":"initial"});
+        	}
+});
       }
     },
     {
@@ -1480,6 +1511,7 @@ let jdesign = function (newdata = null) {
               });
               break;
             case `data`:
+            alert("kk");
               method.export(data, `data.json`);
               break;
           }
@@ -1952,6 +1984,29 @@ let jdesign = function (newdata = null) {
       init.event();
       canvas.render();
       input.render();
+      
+    },
+    capture:()=>{
+    	const get = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop),
+    });
+    console.log(get.jsonbin_id);
+      const settings = {
+          url: `https://api.jsonbin.io/v3/b/${get.jsonbin_id}`,
+          method: "GET",
+          timeout: 0,
+          processData: false,
+        };
+
+        $.ajax(settings).done(function (response) {
+           data = response.record;
+          result.mode(get.mode);
+
+          result.position(get.position);
+          result.create();
+          alert("ggs");
+        });
+    	
     }
   }
 
