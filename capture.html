@@ -21,7 +21,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/jdesign.js"></script>
 <script type="text/javascript">
-    const get = new Proxy(new URLSearchParams(window.location.search), {
+    /*
+const get = new Proxy(new URLSearchParams(window.location.search), {
       get: (searchParams, prop) => searchParams.get(prop),
     });
     console.log(get.jsonbin_id);
@@ -39,8 +40,9 @@
 
           jd.position(get.position);
           jd.create();
-        });
-      
+        }); */
+        
+      let jd = new jdesign().capture();
     </script>
 </body>
 </html>

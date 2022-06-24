@@ -282,12 +282,40 @@
                 >Choose file</label
               >
             </div>
+            <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Copy element from
+            </button>
+            <div class="dropdown-menu">
+              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="0"
+                >Depan</button
+              >
+              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="1"
+                >kiri</button
+              >
+              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="2"
+                >tengah</button
+              >
+              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="3"
+                >kanan</button
+              >
+              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="4"
+                >belakang</button
+              >
+            </div>
+          </div>
             <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-export" data-jd-value="export">
               Export element
             </button>
             <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-delete" data-jd-value="delete">
               Delete element
             </button>
+            
             <div class="dropdown">
               <button
                 class="btn btn-secondary dropdown-toggle"
@@ -2400,6 +2428,7 @@
       })
       jd.form();
       jd.create();
+      jd.capture();
     </script>
 
     
