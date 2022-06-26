@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/jdesign.css" />
+    <style>
+      *{
+        padding: 0px;
+        margin: 0px;
+      }
+    </style>
+</head>
+<body>
+<div data-jd-class="main"></div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.0/dist/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script src="js/jdesign.js"></script>
+<script type="text/javascript">
+/*
+    var zip = new JSZip();
+
+// Add a text file with the contents "Hello World\n"
+zip.file("Hello.txt", "Hello World\n");
+
+// Add a another text file with the contents "Goodbye, cruel world\n"
+zip.file("Goodbye.txt", "Goodbye, cruel world\n");
+
+// Add a folder named "images"
+var img = zip.folder("images");
+
+
+
+zip.generateAsync({type:"base64"}).then(function (content) {
+     location.href="data:application/zip;base64," + content;
+});
+*/
+
+const downloadImage = (v, f)=>{
+	
+          axios({
+                url: `${v}`,
+                method: 'GET',
+                responseType: 'blob'
+          })
+                .then((response) => {
+                	alert(response);
+                      const url = window.URL
+                            .createObjectURL(new Blob([response.data]));
+                      const link = document.createElement('a');
+                      link.href = url;
+                      link.setAttribute('download', `${f}`);
+                      link.style.display = 'none';
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                })
+                
+        }
+downloadImage("https://www.lovethispic.com/uploaded_images/102197-Small-Kitten.png", "nia.png");
+    </script>
+</body>
+</html>
