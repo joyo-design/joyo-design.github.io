@@ -31,7 +31,7 @@ let jdesign = function (newdata = null) {
       imageselectrecentlist: `<img src="{preview}" class="img-thumbnail" style="max-width: 200px">`,
     },
     apiflash:{
-      key: `fa77a505771845de93e2fe615b77f40e`
+      key: `6aa2f725c9ae49e098bfc353b4ae6c7c`
     },
     imgbb:{
       key: `3c71f86b78055de0ff6250ddf4432610`
