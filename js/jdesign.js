@@ -31,7 +31,7 @@ let jdesign = function (newdata = null) {
       imageselectrecentlist: `<img src="{preview}" class="img-thumbnail" style="max-width: 200px">`,
     },
     apiflash:{
-      key: `6aa2f725c9ae49e098bfc353b4ae6c7c`
+      key: `fa77a505771845de93e2fe615b77f40e`
     },
     imgbb:{
       key: `3c71f86b78055de0ff6250ddf4432610`
@@ -56,18 +56,9 @@ let jdesign = function (newdata = null) {
       items: []
     },
     save: {
-      backup:0,
-      status: false,
-      data: {},
+    	mode: `form`,
+    form: `/`,
       width:1000,
-      mockup: {
-        url: [],
-        data:[]
-      },
-      raw: {
-        url: [],
-        data:[]
-      }
     },
     form:{},
     imagerecent:{
@@ -1440,159 +1431,95 @@ let jdesign = function (newdata = null) {
       }
     },
     {
-      pointer: "save",
-      // dev
-      value: (v=null) => {
-        const tempdata = (d = null) => {
-          if (d==null) {
-            return (JSON.stringify(variable.save.data) == JSON.stringify(data))?true:false;
-          }
-          else{
-            variable.save.data = JSON.parse(`${JSON.stringify(d)}`);
-          }
-        }
-        const formSubmit = (path, params, method='post')=> {
-          const form = document.createElement('form');
-          form.method = method;
-          form.action = path;
+      pointer: "saving",
+      value: (v) => {
+      	
+      	const save = {
+      	status: false,
+      jsonbinid: "",
+      captures: [],
+      images: [],
+      download: 0
+      }
+      const proses = {
+      	download: ()=>{
+      	alert('downloading');
+      	var zip = new JSZip();
+      	$.each(save.images, (i, val)=>{
+                
+                
+              
+            axios({
+    url: `${val}`, //your url
+    method: 'GET',
+    responseType: 'blob', // important
+}).then((response) => {
+	
+// Add a folder named "images"
 
-          for (const key in params) {
-            if (params.hasOwnProperty(key)) {
-              const hiddenField = document.createElement('input');
-              hiddenField.type = 'hidden';
-              hiddenField.name = key;
-              hiddenField.value = params[key];
+zip.file(`gambar-${i}.png`, new Blob([response.data]));
 
-              form.appendChild(hiddenField);
-            }
-          }
+save.download += 1;
+alert(save.download);
+if(save.images.length == save.download){
+zip.generateAsync({type:"base64"}).then(function (content) {
+     location.href="data:application/zip;base64," + content;
+});
+}
 
-          document.body.appendChild(form);
-          form.submit();
-        }
-        const downloadImage = (v, f)=>{
-          axios({
-                url: `${v}`,
-                method: 'GET',
-                responseType: 'blob'
-          })
-                .then((response) => {
-                      const url = window.URL
-                            .createObjectURL(new Blob([response.data]));
-                      const link = document.createElement('a');
-                      link.href = url;
-                      link.setAttribute('download', `${f}`);
-                      link.style.display = 'none';
-                      document.body.appendChild(link);
-                      link.click();
-                      document.body.removeChild(link);
-                })
-        }
-        const saveas = (v) =>{
-          
-          switch(v){
-            case `form`:
-
-              let form = variable.form;
-              console.log(form);
-              form.data = `${JSON.stringify(data)}`;
-              form.mockup = `${JSON.stringify(variable.save.mockup.data)}`;
-              form.raw = `${JSON.stringify(variable.save.raw.data)}`;
-              formSubmit(`./sample.php`, form);
-              break;
-            case `mockup`:
-              $.each(variable.save.mockup.data, (i, v)=>{
-                downloadImage(v, `image-mockup-${i}.jpg`);
+});
+                
               });
-              break;
-            case `raw`:
-              $.each(variable.save.raw.data, (i, v)=>{
-                downloadImage(v, `image-raw-${i}.png`);
-              });
-              break;
-            case `data`:
-            alert("kk");
-              method.export(data, `data.json`);
-              break;
-          }
-        }
-        const saving = (v) =>{
-          const capture = (type, url, v)=>{
-            const settings = {
-              url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://api.apiflash.com/v1/urltoimage?access_key=${variable.apiflash.key}&url=${encodeURIComponent(url.address)}&format=${(type=="mockup")?'jpeg':'png'}&width=${url.width}&height=${url.height}&fresh=true&full_page=true&response_type=image&transparent=true&wait_until=network_idle`)}`,
+      	},
+      	captures: () =>{
+      	$.each(save.captures, (i, val)=>{
+                
+                $.ajax({
+              url: `https://api.imgbb.com/1/upload?key=${variable.imgbb.key}&image=${encodeURIComponent(`https://api.apiflash.com/v1/urltoimage?access_key=${variable.apiflash.key}&url=${encodeURIComponent(val.address)}&format=${(val.type=="mockup")?'jpeg':'png'}&width=${val.width}&height=${val.height}&fresh=true&full_page=true&response_type=image&transparent=true&wait_until=network_idle`)}`,
               method: "GET",
               timeout: 0,
               processData: false,
-              error: ()=>{
-                if(variable.save.backup <= 20){
-                  variable.save.backup += 1;
-                  capture(type, url, v);
-                }
-                else{
-                  console.log("Having error to capture product. try again");
-                  jd.pointer(`save`).prop( "disabled", false);
-                  }
-              }
-            };
-            $.ajax(settings).done(function (response) {
-              (type=='mockup')?variable.save.mockup.data.push(response.data.url):variable.save.raw.data.push(response.data.url);;
-              variable.save.status = (variable.save.mockup.url.length+variable.save.mockup.url.length == variable.save.mockup.data.length+variable.save.mockup.data.length)?true:false;
-              console.log(response);
-              if(variable.save.status){
-                jd.pointer(`save`).prop( "disabled", false);
-                saveas(v);
+            }
+            ).done(function (response) {
+              alert(JSON.stringify(response));
+              save.images.push(response.data.url);
+              if(save.captures.length == save.images.length){
+              	proses.download();
+              	alert(JSON.stringify(save.images));
+           
               }
               
             });
-          }
-          $.each(variable.save.mockup.url, (i, url)=>{
-            capture("mockup", url, v);
-          });
-          $.each(variable.save.raw.url, (i, url)=>{
-            capture("raw", url, v);
-          });
-        }
-
-        console.log(tempdata());
-        if (tempdata() && variable.save.status) {
-          saveas(v);
-        }
-        else{
-          jd.pointer(`save`).prop( "disabled", true);
-          tempdata(data);
-          
-          variable.save = {
-      backup:0,
-      status: false,
-      data: {},
-      mockup: {
-        url: [],
-        data:[]
-      },
-      raw: {
-        url: [],
-        data:[]
-      }
-    }
-          console.log(variable.save);
-          let req = new XMLHttpRequest();
+                
+              });
+            
+      	},
+      	jsonbinid: ()=>{
+      	
+      	let req = new XMLHttpRequest();
           req.onreadystatechange = () => {
             if (req.readyState == XMLHttpRequest.DONE) {
-              let id = JSON.parse(req.responseText).metadata.id;
-              let mockupurl = ``;
-              let rawurl = ``;
-              $.each(data.display.position, (i, val)=>{
+            	save.jsonbinid = JSON.parse(req.responseText).metadata.id;
+            
+            let str = "";
+            $.each(data.display.position, (i, val)=>{
                 if (val.available) {
-                  mockupurl += `{"width":${variable.save.width}, "height":${variable.save.width}, "address": "https://joyo-design.github.io/capture.html?jsonbin_id=${id}&mode=mockup&position=${i}"},`
+                  str += `{"type":"mockup", "width":${variable.save.width}, "height":${variable.save.width}, "address": "https://joyo-design.github.io/capture.html?jsonbin_id=${save.jsonbinid}&mode=mockup&position=${i}"},`
                   if (data.display.element[i].layer.length != 0) {
-                    rawurl += `{"width":${variable.save.width}, "height":${(variable.save.width*val.printable.height)/val.printable.width}, "address": "https://joyo-design.github.io/capture.html?jsonbin_id=${id}&mode=raw&position=${i}"},`
+                    str += `{"type":"raw", "width":${variable.save.width}, "height":${(variable.save.width*val.printable.height)/val.printable.width}, "address": "https://joyo-design.github.io/capture.html?jsonbin_id=${save.jsonbinid}&mode=raw&position=${i}"},`
                   }
                 }
               });
-              variable.save.mockup.url = JSON.parse(`[${mockupurl.substring(0, mockupurl.length - 1)}]`);
-              variable.save.raw.url = JSON.parse(`[${rawurl.substring(0, rawurl.length - 1)}]`);
-              saving(v);
+              
+              save.captures = JSON.parse(`[${String(str).substring(-1, str.length-1)}]`);
+              
+              proses.captures();
+              
+              alert(JSON.stringify(save));
             }
+            else{
+            	console.log(req.readyState+" "+req.status)
+            	}
           };
             
           req.open("POST", "https://api.jsonbin.io/v3/b", true);
@@ -1600,15 +1527,18 @@ let jdesign = function (newdata = null) {
           req.setRequestHeader("X-Bin-Private", false);
           req.setRequestHeader("X-Master-Key", `${variable.jsonbin.key}`);
           req.send(JSON.stringify(data));
-          
-        }
-        
+      	},
+      result: () =>{
+      	proses.jsonbinid();
+      	}
+      
+      }
+      proses.result();
       },
       render:()=>{
-       
+        
       }
     },
-    
   ];
 
   const input = {
@@ -1979,6 +1909,17 @@ let jdesign = function (newdata = null) {
     },
     mode:(v = `mockup`)=>{
       variable.canvas.mode = v;
+    },
+    save: {
+    	mode: (v=`form`)=>{
+    	variable.save.mode = v;
+    	},
+    form: (v=`/`)=>{
+    	variable.save.form = v;
+    	},
+    	width: (v=1000)=>{
+      variable.save.width = v;
+       },
     },
     savewidth:(v=1000)=>{
       variable.save.width = v;
