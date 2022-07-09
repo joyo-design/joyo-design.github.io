@@ -1,2437 +1,1328 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/reinvented-color-wheel@0.4.0/css/reinvented-color-wheel.min.css"
-    />
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reinvented-color-wheel@0.4.0/css/reinvented-color-wheel.min.css" />
 
-    <title>Hello, world!</title>
+        <title>Hello, world!</title>
 
-    <link rel="stylesheet" href="css/jdesign.css" />
+        <link rel="stylesheet" href="css/jdesign.css" />
 
-    <style type="text/css">
-      /*!
+        <style type="text/css">
+            /*!
  * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/)
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
-      body {
-        overflow-x: hidden;
-      }
+            body {
+                overflow-x: hidden;
+            }
 
-      /* Toggle Styles */
+            /* Toggle Styles */
 
-      #wrapper {
-        padding-left: 0;
-        -webkit-transition: all 0.5s ease;
-        -moz-transition: all 0.5s ease;
-        -o-transition: all 0.5s ease;
-        transition: all 0.5s ease;
-      }
+            #wrapper {
+                padding-left: 0;
+                -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+            }
 
-      #wrapper.toggled {
-        padding-left: 250px;
-      }
+            #wrapper.toggled {
+                padding-left: 250px;
+            }
 
-      #sidebar-wrapper {
-        z-index: 1000;
-        position: fixed;
-        left: 250px;
-        width: 0;
-        height: 100%;
-        margin-left: -250px;
-        overflow-y: auto;
-        -webkit-transition: all 0.5s ease;
-        -moz-transition: all 0.5s ease;
-        -o-transition: all 0.5s ease;
-        transition: all 0.5s ease;
-      }
+            #sidebar-wrapper {
+                z-index: 1000;
+                position: fixed;
+                left: 250px;
+                width: 0;
+                height: 100%;
+                margin-left: -250px;
+                overflow-y: auto;
+                -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+            }
 
-      #wrapper.toggled #sidebar-wrapper {
-        width: 250px;
-      }
+            #wrapper.toggled #sidebar-wrapper {
+                width: 250px;
+            }
 
-      #page-content-wrapper {
-        width: 100%;
-        position: absolute;
-        padding: 15px;
-      }
+            #page-content-wrapper {
+                width: 100%;
+                position: absolute;
+                padding: 15px;
+            }
 
-      #wrapper.toggled #page-content-wrapper {
-        position: absolute;
-        margin-right: -250px;
-      }
+            #wrapper.toggled #page-content-wrapper {
+                position: absolute;
+                margin-right: -250px;
+            }
 
-      /* Sidebar Styles */
+            /* Sidebar Styles */
 
-      @media (min-width: 768px) {
-        #wrapper {
-          padding-left: 250px;
-        }
+            @media (min-width: 768px) {
+                #wrapper {
+                    padding-left: 250px;
+                }
 
-        #wrapper.toggled {
-          padding-left: 0;
-        }
+                #wrapper.toggled {
+                    padding-left: 0;
+                }
 
-        #sidebar-wrapper {
-          width: 250px;
-        }
+                #sidebar-wrapper {
+                    width: 250px;
+                }
 
-        #wrapper.toggled #sidebar-wrapper {
-          width: 0;
-        }
+                #wrapper.toggled #sidebar-wrapper {
+                    width: 0;
+                }
 
-        #page-content-wrapper {
-          padding: 20px;
-          position: relative;
-        }
+                #page-content-wrapper {
+                    padding: 20px;
+                    position: relative;
+                }
 
-        #wrapper.toggled #page-content-wrapper {
-          position: relative;
-          margin-right: 0;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="wrapper">
-      <!-- Sidebar -->
-      <div id="sidebar-wrapper" class="shadow bg-white rounded">
-        <div class="m-2">
-          <!--------------- jd-action-main -------------------->
-          <div data-jd-class="action" data-jd-value="action-main">
-            <div class="list-group">
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-product"
-              >
-                Produk
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-template"
-              >
-                Template
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-color"
-              >
-                Color
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-element"
-              >
-                Element
-              </button>
-            </div>
-          </div>
+                #wrapper.toggled #page-content-wrapper {
+                    position: relative;
+                    margin-right: 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="shadow bg-white rounded">
+                <div class="m-2">
+                    <!--------------- jd-action-main -------------------->
+                    <div data-jd-class="action" data-jd-value="action-main">
+                        <div class="list-group">
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-product">
+                                Produk
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-template">
+                                Template
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-color">
+                                Color
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-element">
+                                Element
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-data">
+                                data
+                            </button>
+                        </div>
+                    </div>
 
-          <!--------------- jd-action-product -------------------->
-          <div data-jd-class="action" data-jd-value="action-product">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-main"
-            >
-              kembali
-            </button>
-            <div id="jd-product-data" class="text-center">
-              <img
-                src="https://i.ibb.co/ZhQ9DmM/tshirt-belakang-min.jpg"
-                class="img-thumbnail"
-                style="max-width: 200px"
-                data-jd-class="input-click"
-                data-jd-pointer="product"
-                data-jd-value="%7B%22product%22%3A%7B%22id%22%3A%221%22%2C%22name%22%3A%22Tshirt%20lengan%20pendek%22%2C%22category%22%3A%22Tshirt%22%2C%22spesification%22%3A%7B%22weight%22%3A400%2C%22size%22%3A%5B%22xs%22%2C%22s%22%2C%22m%22%2C%22x%22%2C%22xl%22%2C%22xxl%22%5D%2C%22model%22%3A%22combat%2060s%22%7D%2C%22color%22%3A%7B%22main%22%3A%22%23fefefe%22%2C%22recommendation%22%3A%5B%22%23ff0000%22%2C%22%2300ff00%22%2C%22%230000ff%22%5D%7D%7D%2C%22display%22%3A%7B%22key%22%3A4%2C%22position%22%3A%5B%7B%22available%22%3Atrue%2C%22image%22%3A%7B%22bottom%22%3A%22https%3A%2F%2Fi.ibb.co%2FQ8QsZPf%2Ftshirt-depan-min.jpg%22%2C%22top%22%3A%22https%3A%2F%2Fi.ibb.co%2FB3R5gbF%2Ftshirt-depan.png%22%7D%2C%22printable%22%3A%7B%22top%22%3A65%2C%22left%22%3A95%2C%22width%22%3A140%2C%22height%22%3A212%7D%7D%2C%7B%22available%22%3Atrue%2C%22image%22%3A%7B%22bottom%22%3A%22%22%2C%22top%22%3A%22%22%7D%2C%22printable%22%3A%7B%22top%22%3A65%2C%22left%22%3A95%2C%22width%22%3A140%2C%22height%22%3A212%7D%7D%2C%7B%22available%22%3Atrue%2C%22image%22%3A%7B%22bottom%22%3A%22%22%2C%22top%22%3A%22%22%7D%2C%22printable%22%3A%7B%22top%22%3A65%2C%22left%22%3A95%2C%22width%22%3A140%2C%22height%22%3A212%7D%7D%2C%7B%22available%22%3Atrue%2C%22image%22%3A%7B%22bottom%22%3A%22%22%2C%22top%22%3A%22%22%7D%2C%22printable%22%3A%7B%22top%22%3A65%2C%22left%22%3A95%2C%22width%22%3A140%2C%22height%22%3A212%7D%7D%2C%7B%22available%22%3Atrue%2C%22image%22%3A%7B%22bottom%22%3A%22https%3A%2F%2Fi.ibb.co%2FZhQ9DmM%2Ftshirt-belakang-min.jpg%22%2C%22top%22%3A%22https%3A%2F%2Fi.ibb.co%2F47P3zWX%2Ftshirt-belakang.png%22%7D%2C%22printable%22%3A%7B%22top%22%3A65%2C%22left%22%3A95%2C%22width%22%3A140%2C%22height%22%3A212%7D%7D%5D%7D%7D"
-              />
-            </div>
-          </div>
+                    <!--------------- jd-action-product -------------------->
+                    <div data-jd-class="action" data-jd-value="action-data">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-main">
+                            kembali
+                        </button>
+                        <div id="jd-data-data" class="text-center">
+                            <label class="form-label" for="action-dataimport">Import product</label>
+                            <input type="file" class="form-control" id="action-dataimport" data-jd-class="input-change" data-jd-pointer="data-import" />
+                            <div class="form-outline my-2">
+                                <textarea class="form-control" id="action-dataedit" rows="4" data-jd-class="input-input" data-jd-pointer="data-edit"></textarea>
+                                <label class="form-label" for="action-dataedit">Data</label>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" type="button" data-jd-class="input-click" data-jd-pointer="data-export"><i class="fas fa-File-export"></i> Eksport product</button>
+                            </div>
+                        </div>
+                    </div>
 
-          <!--------------- jd-action-template -------------------->
-          <div data-jd-class="action" data-jd-value="action-template">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-main"
-            >
-              kembali
-            </button>
-            <div class="input-group my-2">
-              <input
-                id="jd-template-keyword"
-                type="text"
-                class="form-control"
-                placeholder="keyword"
-                value=""
-              />
-              <div class="input-group-append">
-                <button
-                  id="jd-template-search"
-                  class="btn btn-outline-secondary"
-                  type="button"
-                >
-                  Cari
-                </button>
-              </div>
-            </div>
+                    <!--------------- jd-action-product -------------------->
+                    <div data-jd-class="action" data-jd-value="action-product">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-main">
+                            kembali
+                        </button>
+                        <div id="jd-product-data" class="text-center">
+                            <img
+                                src="https://i.ibb.co/ZhQ9DmM/tshirt-belakang-min.jpg"
+                                class="img-thumbnail"
+                                style="max-width: 200px;"
+                                data-jd-class="input-click"
+                                data-jd-pointer="product"
+                                data-jd-value="%7B%22product%22%3A%7B%22id%22%3A%221%22%2C%22name%22%3A%22Tshirt%20lengan%20pendek%22%2C%22category%22%3A%22Tshirt%22%2C%22spesification%22%3A%7B%22weight%22%3A400%2C%22size%22%3A%5B%22xs%22%2C%22s%22%2C%22m%22%2C%22x%22%2C%22xl%22%2C%22xxl%22%5D%2C%22model%22%3A%22combat%2060s%22%7D%2C%22color%22%3A%7B%22main%22%3A%22%23fefefe%22%2C%22recommendation%22%3A%5B%22%23ff0000%22%2C%22%2300ff00%22%2C%22%230000ff%22%5D%7D%7D%2C%22display%22%3A%7B%22key%22%3A4%2C%22position%22%3A%5B%7B%22available%22%3Atrue%2C%22image%22%3A%7B%22bottom%22%3A%22https%3A%2F%2Fi.ibb.co%2FQ8QsZPf%2Ftshirt-depan-min.jpg%22%2C%22top%22%3A%22https%3A%2F%2Fi.ibb.co%2FB3R5gbF%2Ftshirt-depan.png%22%7D%2C%22printable%22%3A%7B%22top%22%3A65%2C%22left%22%3A95%2C%22width%22%3A140%2C%22height%22%3A212%7D%7D%2C%7B%22available%22%3Atrue%2C%22image%22%3A%7B%22bottom%22%3A%22%22%2C%22top%22%3A%22%22%7D%2C%22printable%22%3A%7B%22top%22%3A65%2C%22left%22%3A95%2C%22width%22%3A140%2C%22height%22%3A212%7D%7D%2C%7B%22available%22%3Atrue%2C%22image%22%3A%7B%22bottom%22%3A%22%22%2C%22top%22%3A%22%22%7D%2C%22printable%22%3A%7B%22top%22%3A65%2C%22left%22%3A95%2C%22width%22%3A140%2C%22height%22%3A212%7D%7D%2C%7B%22available%22%3Atrue%2C%22image%22%3A%7B%22bottom%22%3A%22%22%2C%22top%22%3A%22%22%7D%2C%22printable%22%3A%7B%22top%22%3A65%2C%22left%22%3A95%2C%22width%22%3A140%2C%22height%22%3A212%7D%7D%2C%7B%22available%22%3Atrue%2C%22image%22%3A%7B%22bottom%22%3A%22https%3A%2F%2Fi.ibb.co%2FZhQ9DmM%2Ftshirt-belakang-min.jpg%22%2C%22top%22%3A%22https%3A%2F%2Fi.ibb.co%2F47P3zWX%2Ftshirt-belakang.png%22%7D%2C%22printable%22%3A%7B%22top%22%3A65%2C%22left%22%3A95%2C%22width%22%3A140%2C%22height%22%3A212%7D%7D%5D%7D%7D"
+                            />
+                        </div>
+                    </div>
 
-            <div id="jd-template-data" class="text-center">
-              <img
-                src="https://i.ibb.co/9N2V0Xh/gef306d86e8edaf1df1c53b87e1383a28eb318a8c334387e8bb222572fe51fdd00303beb21dce1797790b83a288b9c94a-64.png"
-                class="img-thumbnail"
-                style="max-width: 200px"
-                data-jd-class="input-click"
-                data-jd-pointer="template"
-                data-jd-value="%5B%7B%22type%22%3A%22image%22%2C%22src%22%3A%22https%3A%2F%2Fi.ibb.co%2FFBFtNSG%2Fg93cb2e9f15a9b64fcbc9e2e12b34dd002ee3cc0262abfdf6105b0cd42c79633535bd8b3d5b81874f1f35f7482b50d89fd7b.png%22%2C%22position%22%3A%7B%22top%22%3A301%2C%22left%22%3A372%7D%2C%22dimension%22%3A%7B%22natural%22%3Atrue%2C%22width%22%3A200%2C%22height%22%3A200%2C%22naturalwidth%22%3A440%2C%22naturalheight%22%3A640%7D%2C%22color%22%3A%7B%22edit%22%3A%7B%22mode%22%3Afalse%2C%22main%22%3A%22%23ff0000%22%7D%2C%22background%22%3A%7B%22type%22%3A%22none%22%2C%22main%22%3A%5B%22%23ff0000%22%5D%2C%22poslinear%22%3A0%2C%22posradialx%22%3A50%2C%22posradialy%22%3A50%7D%2C%22filter%22%3A%22%22%2C%22opacity%22%3A%22100%22%7D%2C%22transform%22%3A%7B%22rotate%22%3A0%2C%22skew%22%3A0%2C%22flip%22%3A%7B%22vertical%22%3Afalse%2C%22horizontal%22%3Afalse%7D%7D%2C%22effect%22%3A%7B%22stroke%22%3A%7B%22width%22%3A0%2C%22color%22%3A%22%23000000%22%7D%2C%22depth%22%3A%7B%22type%22%3A0%2C%22width%22%3A0%2C%22color%22%3A%22%23000000%22%7D%2C%22outline%22%3A%7B%22width%22%3A0%2C%22color%22%3A%22%23000000%22%7D%7D%2C%22shadow%22%3A%7B%22blur%22%3A%220%22%2C%22color%22%3A%22%23000000%22%2C%22posx%22%3A0%2C%22posy%22%3A0%7D%2C%22round%22%3A%7B%22top%22%3A%7B%22left%22%3A0%2C%22right%22%3A0%7D%2C%22bottom%22%3A%7B%22left%22%3A0%2C%22right%22%3A0%7D%7D%7D%2C%7B%22type%22%3A%22text%22%2C%22text%22%3A%7B%22write%22%3A%22for%20you%5Cnonly%22%2C%22align%22%3A%22center%22%2C%22bold%22%3Afalse%2C%22underline%22%3Afalse%2C%22italic%22%3Afalse%7D%2C%22font%22%3A%7B%22family%22%3A%22%27Gochi%20Hand%27%2C%20cursive%22%2C%22source%22%3A%22https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DGochi%2BHand%26display%3Dswap%22%7D%2C%22size%22%3A%7B%22fontsize%22%3A55%2C%22letterspacing%22%3A0%2C%22lineheight%22%3A100%7D%2C%22position%22%3A%7B%22top%22%3A538%2C%22left%22%3A422%7D%2C%22transform%22%3A%7B%22rotate%22%3A0%2C%22skew%22%3A0%2C%22flip%22%3A%7B%22vertical%22%3Afalse%2C%22horizontal%22%3Afalse%7D%7D%2C%22color%22%3A%7B%22background%22%3A%7B%22type%22%3A%22linear-gradient%22%2C%22main%22%3A%5B%22%23ff0000%22%2C%22%23fff000%22%5D%2C%22poslinear%22%3A94%2C%22posradialx%22%3A50%2C%22posradialy%22%3A50%7D%2C%22opacity%22%3A%22100%22%7D%2C%22effect%22%3A%7B%22stroke%22%3A%7B%22width%22%3A9%2C%22color%22%3A%22%23000000%22%7D%2C%22depth%22%3A%7B%22type%22%3A0%2C%22width%22%3A3%2C%22color%22%3A%22%23000000%22%7D%2C%22curve%22%3A%7B%22type%22%3A0%2C%22round%22%3A300%2C%22degree%22%3A75%7D%2C%22outline%22%3A%7B%22width%22%3A0%2C%22color%22%3A%22%23000000%22%7D%7D%2C%22shadow%22%3A%7B%22blur%22%3A0%2C%22color%22%3A%22%23000000%22%2C%22posx%22%3A0%2C%22posy%22%3A0%7D%7D%5D"
-              />
-            </div>
-            <div id="jd-template-spinner" class="text-center">
-              <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-            </div>
-            <button
-              id="jd-template-next"
-              type="button"
-              class="btn btn-secondary btn-block"
-            >
-              Selengkapnya
-            </button>
-          </div>
+                    <!--------------- jd-action-template -------------------->
+                    <div data-jd-class="action" data-jd-value="action-template">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-main">
+                            kembali
+                        </button>
+                        <div class="input-group my-2">
+                            <input id="jd-template-keyword" type="text" class="form-control" placeholder="keyword" value="" />
+                            <div class="input-group-append">
+                                <button id="jd-template-search" class="btn btn-outline-secondary" type="button">
+                                    Cari
+                                </button>
+                            </div>
+                        </div>
 
-          <!------------------------ jd-action-color -------------------------->
-          <div data-jd-class="action" data-jd-value="action-color">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-main"
-            >
-              kembali
-            </button>
+                        <div id="jd-template-data" class="text-center">
+                            <img
+                                src="https://i.ibb.co/9N2V0Xh/gef306d86e8edaf1df1c53b87e1383a28eb318a8c334387e8bb222572fe51fdd00303beb21dce1797790b83a288b9c94a-64.png"
+                                class="img-thumbnail"
+                                style="max-width: 200px;"
+                                data-jd-class="input-click"
+                                data-jd-pointer="template"
+                                data-jd-value="%5B%7B%22type%22%3A%22image%22%2C%22src%22%3A%22https%3A%2F%2Fi.ibb.co%2FFBFtNSG%2Fg93cb2e9f15a9b64fcbc9e2e12b34dd002ee3cc0262abfdf6105b0cd42c79633535bd8b3d5b81874f1f35f7482b50d89fd7b.png%22%2C%22position%22%3A%7B%22top%22%3A301%2C%22left%22%3A372%7D%2C%22dimension%22%3A%7B%22natural%22%3Atrue%2C%22width%22%3A200%2C%22height%22%3A200%2C%22naturalwidth%22%3A440%2C%22naturalheight%22%3A640%7D%2C%22color%22%3A%7B%22edit%22%3A%7B%22mode%22%3Afalse%2C%22main%22%3A%22%23ff0000%22%7D%2C%22background%22%3A%7B%22type%22%3A%22none%22%2C%22main%22%3A%5B%22%23ff0000%22%5D%2C%22poslinear%22%3A0%2C%22posradialx%22%3A50%2C%22posradialy%22%3A50%7D%2C%22filter%22%3A%22%22%2C%22opacity%22%3A%22100%22%7D%2C%22transform%22%3A%7B%22rotate%22%3A0%2C%22skew%22%3A0%2C%22flip%22%3A%7B%22vertical%22%3Afalse%2C%22horizontal%22%3Afalse%7D%7D%2C%22effect%22%3A%7B%22stroke%22%3A%7B%22width%22%3A0%2C%22color%22%3A%22%23000000%22%7D%2C%22depth%22%3A%7B%22type%22%3A0%2C%22width%22%3A0%2C%22color%22%3A%22%23000000%22%7D%2C%22outline%22%3A%7B%22width%22%3A0%2C%22color%22%3A%22%23000000%22%7D%7D%2C%22shadow%22%3A%7B%22blur%22%3A%220%22%2C%22color%22%3A%22%23000000%22%2C%22posx%22%3A0%2C%22posy%22%3A0%7D%2C%22round%22%3A%7B%22top%22%3A%7B%22left%22%3A0%2C%22right%22%3A0%7D%2C%22bottom%22%3A%7B%22left%22%3A0%2C%22right%22%3A0%7D%7D%7D%2C%7B%22type%22%3A%22text%22%2C%22text%22%3A%7B%22write%22%3A%22for%20you%5Cnonly%22%2C%22align%22%3A%22center%22%2C%22bold%22%3Afalse%2C%22underline%22%3Afalse%2C%22italic%22%3Afalse%7D%2C%22font%22%3A%7B%22family%22%3A%22%27Gochi%20Hand%27%2C%20cursive%22%2C%22source%22%3A%22https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DGochi%2BHand%26display%3Dswap%22%7D%2C%22size%22%3A%7B%22fontsize%22%3A55%2C%22letterspacing%22%3A0%2C%22lineheight%22%3A100%7D%2C%22position%22%3A%7B%22top%22%3A538%2C%22left%22%3A422%7D%2C%22transform%22%3A%7B%22rotate%22%3A0%2C%22skew%22%3A0%2C%22flip%22%3A%7B%22vertical%22%3Afalse%2C%22horizontal%22%3Afalse%7D%7D%2C%22color%22%3A%7B%22background%22%3A%7B%22type%22%3A%22linear-gradient%22%2C%22main%22%3A%5B%22%23ff0000%22%2C%22%23fff000%22%5D%2C%22poslinear%22%3A94%2C%22posradialx%22%3A50%2C%22posradialy%22%3A50%7D%2C%22opacity%22%3A%22100%22%7D%2C%22effect%22%3A%7B%22stroke%22%3A%7B%22width%22%3A9%2C%22color%22%3A%22%23000000%22%7D%2C%22depth%22%3A%7B%22type%22%3A0%2C%22width%22%3A3%2C%22color%22%3A%22%23000000%22%7D%2C%22curve%22%3A%7B%22type%22%3A0%2C%22round%22%3A300%2C%22degree%22%3A75%7D%2C%22outline%22%3A%7B%22width%22%3A0%2C%22color%22%3A%22%23000000%22%7D%7D%2C%22shadow%22%3A%7B%22blur%22%3A0%2C%22color%22%3A%22%23000000%22%2C%22posx%22%3A0%2C%22posy%22%3A0%7D%7D%5D"
+                            />
+                        </div>
+                        <div id="jd-template-spinner" class="text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                        <button id="jd-template-next" type="button" class="btn btn-secondary btn-block">
+                            Selengkapnya
+                        </button>
+                    </div>
 
-            <div data-jd-class="colorwheel" data-jd-pointer="color"></div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Color</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                data-jd-class="input-input"
-                data-jd-pointer="color"
-                placeholder="#fefefe"
-              />
-            </div>
-            <div
-              class="btn-group"
-              data-jd-class="color-recommendation"
-              role="group"
-            ></div>
-          </div>
+                    <!------------------------ jd-action-color -------------------------->
+                    <div data-jd-class="action" data-jd-value="action-color">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-main">
+                            kembali
+                        </button>
 
+                        <div data-jd-class="colorwheel" data-jd-pointer="color"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Color</span>
+                            </div>
+                            <input type="text" class="form-control" data-jd-class="input-input" data-jd-pointer="color" placeholder="#fefefe" />
+                        </div>
+                        <div class="btn-group" data-jd-class="color-recommendation" role="group"></div>
+                    </div>
 
-          <div data-jd-class="action" data-jd-value="action-element">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-main"
-            >
-              kembali
-            </button>
-            <div class="custom-file">
-              <input
-                type="file"
-                class="custom-file-input"
-                id="element-import"
-                data-jd-class="input-change"
-                data-jd-pointer="element-import"
-              />
-              <label class="custom-file-label" for="element-import"
-                >Choose file</label
-              >
-            </div>
-            <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              data-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Copy element from
-            </button>
-            <div class="dropdown-menu">
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="0"
-                >Depan</button
-              >
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="1"
-                >kiri</button
-              >
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="2"
-                >tengah</button
-              >
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="3"
-                >kanan</button
-              >
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="4"
-                >belakang</button
-              >
-            </div>
-          </div>
-            <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-export" data-jd-value="export">
-              Export element
-            </button>
-            <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-delete" data-jd-value="delete">
-              Delete element
-            </button>
-            
-            <div class="dropdown">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Add element
-              </button>
-              <div class="dropdown-menu">
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  data-jd-class="input-click"
-                  data-jd-pointer="element-add"
-                  data-jd-value="text"
-                >
-                  Text
-                </button>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  data-jd-class="input-click"
-                  data-jd-pointer="element-add"
-                  data-jd-value="image"
-                >
-                  Image
-                </button>
-              </div>
-            </div>
-            <div
-              class="list-group"
-              data-jd-class="element-layerlist"
-              data-jd-pointer="action"
-              data-jd-value="action-text|action-image"
-            ></div>
-          </div>
+                    <div data-jd-class="action" data-jd-value="action-element">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-main">
+                            kembali
+                        </button>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="element-import" data-jd-class="input-change" data-jd-pointer="element-import" />
+                            <label class="custom-file-label" for="element-import">Choose file</label>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                Copy element from
+                            </button>
+                            <div class="dropdown-menu">
+                                <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="0">Depan</button>
+                                <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="1">kiri</button>
+                                <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="2">tengah</button>
+                                <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="3">kanan</button>
+                                <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="element-copy" data-jd-value="4">belakang</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-export" data-jd-value="export">
+                            Export element
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-delete" data-jd-value="delete">
+                            Delete element
+                        </button>
 
-          <!-----  action for text -->
-          <div data-jd-class="action" data-jd-value="action-text">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-element"
-            >
-              kembali
-            </button>
-            <div
-              class="btn-toolbar"
-              role="toolbar"
-              aria-label="Toolbar with button groups"
-            >
-              <div class="btn-group mr-2" role="group">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="element-layer"
-                  data-jd-value="up"
-                >
-                  Up
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="element-layer"
-                  data-jd-value="down"
-                >
-                  down
-                </button>
-              </div>
-              <div class="btn-group mr-2" role="group">
-                <button 
-                  type="button" 
-                  class="btn btn-secondary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="element-layer"
-                  data-jd-value="copy"
-                  >
-                    copy
-                  </button>
-                  
-                <button 
-                  type="button" 
-                  class="btn btn-secondary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="element-layer"
-                  data-jd-value="reset"
-                  >
-                    reset
-                  </button>
-                <button 
-                  type="button" 
-                  class="btn btn-secondary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="element-layer"
-                  data-jd-value="delete"
-                  >
-                    delete
-                  </button>
-              </div>
-            </div>
-            <div class="list-group">
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-text-write"
-              >
-                Write
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-text-style"
-              >
-                style
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-text-font"
-              >
-                font
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-text-position"
-              >
-                Position
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-text-size"
-              >
-                size
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-text-color"
-              >
-                color
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-text-transform"
-              >
-                transform
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-text-effect"
-              >
-                effect
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-text-shadow"
-              >
-                shadow
-              </button>
-            </div>
-          </div>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Add element
+                            </button>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item" type="button" data-jd-class="input-click" data-jd-pointer="element-add" data-jd-value="text">
+                                    Text
+                                </button>
+                                <button class="dropdown-item" type="button" data-jd-class="input-click" data-jd-pointer="element-add" data-jd-value="image">
+                                    Image
+                                </button>
+                            </div>
+                        </div>
+                        <div class="list-group" data-jd-class="element-layerlist" data-jd-pointer="action" data-jd-value="action-text|action-image"></div>
+                    </div>
 
-          <div data-jd-class="action" data-jd-value="action-text-write">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-text"
-            >
-              kembali
-            </button>
-            <div class="form-group">
-              <label>Write</label>
-              <textarea
-                class="form-control"
-                data-jd-class="input-input"
-                data-jd-pointer="text-textwrite"
-                rows="3"
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label>align</label>
-              <select
-                data-jd-class="input-change"
-                data-jd-pointer="text-textalign"
-                class="form-control"
-              >
-                <option value="left">left</option>
-                <option value="center">center</option>
-                <option value="right">right</option>
-              </select>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                data-jd-class="input-input"
-                data-jd-pointer="text-textbold"
-              />
-              <label class="form-check-label">bold</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                data-jd-class="input-input"
-                data-jd-pointer="text-textitalic"
-              />
-              <label class="form-check-label">italic</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                data-jd-class="input-input"
-                data-jd-pointer="text-textunderline"
-              />
-              <label class="form-check-label">underline</label>
-            </div>
-          </div>
+                    <!-----  action for text -->
+                    <div data-jd-class="action" data-jd-value="action-text">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-element">
+                            kembali
+                        </button>
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2" role="group">
+                                <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-layer" data-jd-value="up">
+                                    Up
+                                </button>
+                                <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-layer" data-jd-value="down">
+                                    down
+                                </button>
+                            </div>
+                            <div class="btn-group mr-2" role="group">
+                                <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-layer" data-jd-value="copy">
+                                    copy
+                                </button>
 
-          <!--------------- text style-------------------->
-          <div data-jd-class="action" data-jd-value="action-text-style">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-text"
-            >
-              kembali
-            </button>
-            <div class="text-center">
-              <img
-                src="https://i.ibb.co/yh6ctmj/Untitled.png"
-                class="img-thumbnail"
-                style="max-width: 200px"
-                data-jd-class="input-click"
-                data-jd-pointer="text-style"
-                data-jd-value="%7B%22type%22%3A%22text%22%2C%22text%22%3A%7B%22write%22%3A%22Tegxt%22%2C%22align%22%3A%22center%22%2C%22bold%22%3Atrue%2C%22underline%22%3Afalse%2C%22italic%22%3Afalse%7D%2C%22font%22%3A%7B%22family%22%3A%22%27Lobster%27%2C%20cursive%22%2C%22source%22%3A%22https%3A%2F%2Ffonts.googleapis.com%2Fcss2%3Ffamily%3DLobster%26display%3Dswap%22%7D%2C%22size%22%3A%7B%22fontsize%22%3A75%2C%22letterspacing%22%3A0%2C%22lineheight%22%3A100%7D%2C%22position%22%3A%7B%22top%22%3A450%2C%22left%22%3A505%7D%2C%22transform%22%3A%7B%22rotate%22%3A-25%2C%22skew%22%3A-9%2C%22flip%22%3A%7B%22vertical%22%3Afalse%2C%22horizontal%22%3Afalse%7D%7D%2C%22color%22%3A%7B%22background%22%3A%7B%22type%22%3A%22linear-gradient%22%2C%22main%22%3A%5B%22%23ff0000%22%2C%22%23000000%22%5D%2C%22poslinear%22%3A0%2C%22posradialx%22%3A50%2C%22posradialy%22%3A50%7D%2C%22opacity%22%3A%22100%22%7D%2C%22effect%22%3A%7B%22stroke%22%3A%7B%22width%22%3A1%2C%22color%22%3A%22%23ffffff%22%7D%2C%22depth%22%3A%7B%22type%22%3A0%2C%22width%22%3A4%2C%22color%22%3A%22%23000000%22%7D%2C%22curve%22%3A%7B%22type%22%3A1%2C%22round%22%3A300%2C%22degree%22%3A42%7D%2C%22outline%22%3A%7B%22width%22%3A16%2C%22color%22%3A%22%23000000%22%7D%7D%2C%22shadow%22%3A%7B%22blur%22%3A0%2C%22color%22%3A%22%23000000%22%2C%22posx%22%3A0%2C%22posy%22%3A0%7D%7D"
-              />
-            </div>
-          </div>
+                                <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-layer" data-jd-value="reset">
+                                    reset
+                                </button>
+                                <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-layer" data-jd-value="delete">
+                                    delete
+                                </button>
+                            </div>
+                        </div>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text-write">
+                                Write
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text-style">
+                                style
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text-font">
+                                font
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text-position">
+                                Position
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text-size">
+                                size
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text-color">
+                                color
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text-transform">
+                                transform
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text-effect">
+                                effect
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text-shadow">
+                                shadow
+                            </button>
+                        </div>
+                    </div>
 
-          <!--------------- text font-------------------->
-          <div data-jd-class="action" data-jd-value="action-text-font">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-text"
-            >
-              kembali
-            </button>
-            <!-- -dev -->
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">sort by</span>
-              </div>
-              <select
-                class="custom-select"
-                data-jd-class="input-change"
-                data-jd-pointer="text-fontsort"
-              >
-                <option value="trending">trending</option>
-                <option value="alpha">name</option>
-                <option value="popularity">popular</option>
-                <option value="date">newest</option>
-              </select>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">category</span>
-              </div>
-              <select
-                class="custom-select"
-                data-jd-class="input-change"
-                data-jd-pointer="text-fontcategory"
-              >
-                <option value="">All</option>
-                <option value="serif">serif</option>
-                <option value="sans-serif">sans-serif</option>
-                <option value="display">display</option>
-                <option value="handwriting">handwriting</option>
-                <option value="monospace">monospace</option>
-              </select>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">language</span>
-              </div>
-              <select
-                class="custom-select"
-                data-jd-class="input-change"
-                data-jd-pointer="text-fontlanguage"
-              >
-                <option value="">All language</option>
-                <option value="arabic">arabic</option>
-                <option value="bengali">bengali</option>
-                <option value="chinese-hongkong">chinese-hongkong</option>
-                <option value="chinese-simplified">chinese-simplified</option>
-                <option value="chinese-traditional">chinese-traditional</option>
-                <option value="cyrillic">cyrillic</option>
-                <option value="cyrillic-ext">cyrillic-ext</option>
-                <option value="devanagari">devanagari</option>
-                <option value="greek">greek</option>
-                <option value="greek-ext">greek-ext</option>
-                <option value="gujarati">gujarati</option>
-                <option value="gurmukhi">gurmukhi</option>
-                <option value="hebrew">hebrew</option>
-                <option value="japanese">japanese</option>
-                <option value="kannada">kannada</option>
-                <option value="khmer">khmer</option>
-                <option value="korean">korean</option>
-                <option value="latin">latin</option>
-                <option value="latin-ext">latin-ext</option>
-                <option value="malayalam">malayalam</option>
-                <option value="myanmar">myanmar</option>
-                <option value="oriya">oriya</option>
-                <option value="sinhala">sinhala</option>
-                <option value="tamil">tamil</option>
-                <option value="telugu">telugu</option>
-                <option value="thai">thai</option>
-                <option value="tibetan">tibetan</option>
-                <option value="vietnamese">vietnamese</option>
-              </select>
-            </div>
+                    <div data-jd-class="action" data-jd-value="action-text-write">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text">
+                            kembali
+                        </button>
+                        <div class="form-group">
+                            <label>Write</label>
+                            <textarea class="form-control" data-jd-class="input-input" data-jd-pointer="text-textwrite" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>align</label>
+                            <select data-jd-class="input-change" data-jd-pointer="text-textalign" class="form-control">
+                                <option value="left">left</option>
+                                <option value="center">center</option>
+                                <option value="right">right</option>
+                            </select>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" data-jd-class="input-input" data-jd-pointer="text-textbold" />
+                            <label class="form-check-label">bold</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" data-jd-class="input-input" data-jd-pointer="text-textitalic" />
+                            <label class="form-check-label">italic</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" data-jd-class="input-input" data-jd-pointer="text-textunderline" />
+                            <label class="form-check-label">underline</label>
+                        </div>
+                    </div>
 
-            <div class="input-group">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="family name"
-                data-jd-class="input-input"
-                data-jd-pointer="text-fontkeyword"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-outline-secondary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="text-fontsearch"
-                  data-jd-value="search"
-                >
-                  search
-                </button>
-              </div>
-            </div>
-            <div class="list-group" data-jd-class="text-fontlist" data-jd-template="%3Cbutton%20type%3D%22button%22%20class%3D%22list-group-item%20list-group-item-action%22%20%24%7Bfont.attr%7D%3E%24%7Bfont.preview%7D%3C%2Fbutton%3E"></div>
-            
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="text-fontnext"
-              data-jd-value="next"
-            >
-              Next
-            </button>
-          </div>
+                    <!--------------- text style-------------------->
+                    <div data-jd-class="action" data-jd-value="action-text-style">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text">
+                            kembali
+                        </button>
+                        <div class="text-center">
+                            <img
+                                src="https://i.ibb.co/yh6ctmj/Untitled.png"
+                                class="img-thumbnail"
+                                style="max-width: 200px;"
+                                data-jd-class="input-click"
+                                data-jd-pointer="text-style"
+                                data-jd-value="%7B%22type%22%3A%22text%22%2C%22text%22%3A%7B%22write%22%3A%22for%20you%5Cnonly%22%2C%22align%22%3A%22center%22%2C%22bold%22%3Afalse%2C%22underline%22%3Afalse%2C%22italic%22%3Afalse%7D%2C%22font%22%3A%7B%22family%22%3A%22%27Gochi%20Hand%27%2C%20cursive%22%2C%22source%22%3A%22https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DGochi%2BHand%26display%3Dswap%22%7D%2C%22size%22%3A%7B%22fontsize%22%3A55%2C%22letterspacing%22%3A0%2C%22lineheight%22%3A100%7D%2C%22position%22%3A%7B%22top%22%3A538%2C%22left%22%3A422%7D%2C%22transform%22%3A%7B%22rotate%22%3A0%2C%22skew%22%3A0%2C%22flip%22%3A%7B%22vertical%22%3Afalse%2C%22horizontal%22%3Afalse%7D%7D%2C%22color%22%3A%7B%22background%22%3A%7B%22type%22%3A%22linear-gradient%22%2C%22main%22%3A%5B%22%23ff0000%22%2C%22%23fff000%22%5D%2C%22poslinear%22%3A94%2C%22posradialx%22%3A50%2C%22posradialy%22%3A50%7D%2C%22opacity%22%3A%22100%22%7D%2C%22effect%22%3A%7B%22stroke%22%3A%7B%22width%22%3A9%2C%22color%22%3A%22%23000000%22%7D%2C%22depth%22%3A%7B%22type%22%3A0%2C%22width%22%3A3%2C%22color%22%3A%22%23000000%22%7D%2C%22curve%22%3A%7B%22type%22%3A0%2C%22round%22%3A300%2C%22degree%22%3A75%7D%2C%22outline%22%3A%7B%22width%22%3A0%2C%22color%22%3A%22%23000000%22%7D%7D%2C%22shadow%22%3A%7B%22blur%22%3A0%2C%22color%22%3A%22%23000000%22%2C%22posx%22%3A0%2C%22posy%22%3A0%7D%7D"
+                            />
+                        </div>
+                    </div>
 
-          <!-- text position -->
-          <div data-jd-class="action" data-jd-value="action-text-position">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-text"
-            >
-              kembali
-            </button>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Position x</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-positionx"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-positionx"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Position y</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-positiony"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-positiony"
-              />
-            </div>
-          </div>
+                    <!--------------- text font-------------------->
+                    <div data-jd-class="action" data-jd-value="action-text-font">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text">
+                            kembali
+                        </button>
+                        <!-- -dev -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">sort by</span>
+                            </div>
+                            <select class="custom-select" data-jd-class="input-change" data-jd-pointer="text-fontsort">
+                                <option value="trending">trending</option>
+                                <option value="alpha">name</option>
+                                <option value="popularity">popular</option>
+                                <option value="date">newest</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">category</span>
+                            </div>
+                            <select class="custom-select" data-jd-class="input-change" data-jd-pointer="text-fontcategory">
+                                <option value="">All</option>
+                                <option value="serif">serif</option>
+                                <option value="sans-serif">sans-serif</option>
+                                <option value="display">display</option>
+                                <option value="handwriting">handwriting</option>
+                                <option value="monospace">monospace</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">language</span>
+                            </div>
+                            <select class="custom-select" data-jd-class="input-change" data-jd-pointer="text-fontlanguage">
+                                <option value="">All language</option>
+                                <option value="arabic">arabic</option>
+                                <option value="bengali">bengali</option>
+                                <option value="chinese-hongkong">chinese-hongkong</option>
+                                <option value="chinese-simplified">chinese-simplified</option>
+                                <option value="chinese-traditional">chinese-traditional</option>
+                                <option value="cyrillic">cyrillic</option>
+                                <option value="cyrillic-ext">cyrillic-ext</option>
+                                <option value="devanagari">devanagari</option>
+                                <option value="greek">greek</option>
+                                <option value="greek-ext">greek-ext</option>
+                                <option value="gujarati">gujarati</option>
+                                <option value="gurmukhi">gurmukhi</option>
+                                <option value="hebrew">hebrew</option>
+                                <option value="japanese">japanese</option>
+                                <option value="kannada">kannada</option>
+                                <option value="khmer">khmer</option>
+                                <option value="korean">korean</option>
+                                <option value="latin">latin</option>
+                                <option value="latin-ext">latin-ext</option>
+                                <option value="malayalam">malayalam</option>
+                                <option value="myanmar">myanmar</option>
+                                <option value="oriya">oriya</option>
+                                <option value="sinhala">sinhala</option>
+                                <option value="tamil">tamil</option>
+                                <option value="telugu">telugu</option>
+                                <option value="thai">thai</option>
+                                <option value="tibetan">tibetan</option>
+                                <option value="vietnamese">vietnamese</option>
+                            </select>
+                        </div>
 
-          <!-- text size -->
-          <div data-jd-class="action" data-jd-value="action-text-size">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-text"
-            >
-              kembali
-            </button>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">fontsize</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-sizefontsize"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-sizefontsize"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">letterspacing</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-sizeletterspacing"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-sizeletterspacing"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">lineheight</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-sizelineheight"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-sizelineheight"
-              />
-            </div>
-          </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="family name" data-jd-class="input-input" data-jd-pointer="text-fontkeyword" />
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" data-jd-class="input-click" data-jd-pointer="text-fontsearch" data-jd-value="search">
+                                    search
+                                </button>
+                            </div>
+                        </div>
+                        <div
+                            class="list-group"
+                            data-jd-class="text-fontlist"
+                            data-jd-template="%3Cbutton%20type%3D%22button%22%20class%3D%22list-group-item%20list-group-item-action%22%20%24%7Bfont.attr%7D%3E%24%7Bfont.preview%7D%3C%2Fbutton%3E"
+                        ></div>
 
-          <!-- text transform -->
-          <div data-jd-class="action" data-jd-value="action-text-transform">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-text"
-            >
-              kembali
-            </button>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">rotate</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-transformrotate"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-transformrotate"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">skew</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-transformskew"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-transformskew"
-              />
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                data-jd-class="input-input"
-                data-jd-pointer="text-transformfliphorizontal"
-              />
-              <label class="form-check-label">Flip horizontal</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                data-jd-class="input-input"
-                data-jd-pointer="text-transformflipvertical"
-              />
-              <label class="form-check-label">flip vertical</label>
-            </div>
-          </div>
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="text-fontnext" data-jd-value="next">
+                            Next
+                        </button>
+                    </div>
 
-          <!-- text color -->
-          <div data-jd-class="action" data-jd-value="action-text-color">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-text"
-            >
-              kembali
-            </button>
-            <div class="form-group">
-              <label>type</label>
-              <select
-                data-jd-class="input-change"
-                data-jd-pointer="text-colortype"
-                class="form-control"
-              >
-                <option value="normal">normal</option>
-                <option value="linear-gradient">linear-gradient</option>
-                <option value="radial-gradient">radial-gradient</option>
-                <option value="same-parent">same-parent</option>
-              </select>
-            </div>
-            <div data-jd-class="colorwheel" data-jd-pointer="text-color"></div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">color</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-color"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-primary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="text-coloradd"
-                  data-jd-value="#000000"
-                >
-                  add
-                </button>
-              </div>
-            </div>
-            <hr />
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">opacity</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-coloropacity"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-coloropacity"
-              />
-            </div>
-            <hr />
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">position linear</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-colorposlinear"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-colorposlinear"
-              />
-            </div>
-            <hr />
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">position radial x</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-colorposrasialx"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-colorposrasialx"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">position radial y</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-colorposrasialy"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-colorposrasialy"
-              />
-            </div>
-          </div>
+                    <!-- text position -->
+                    <div data-jd-class="action" data-jd-value="action-text-position">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text">
+                            kembali
+                        </button>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Position x</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-positionx" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-positionx" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Position y</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-positiony" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-positiony" />
+                        </div>
+                    </div>
 
-          <!-- text effect -->
-          <div data-jd-class="action" data-jd-value="action-text-effect">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-text"
-            >
-              kembali
-            </button>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">stroke color</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectstrokecolor"
-              />
-            </div>
-            <div
-              data-jd-class="colorwheel"
-              data-jd-pointer="text-effectstrokecolor"
-            ></div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">stroke width</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectstrokewidth"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectstrokewidth"
-              />
-            </div>
-            <hr />
-            <div class="form-group">
-              <label>depth type</label>
-              <select
-                data-jd-class="input-change"
-                data-jd-pointer="text-effectdepthtype"
-                class="form-control"
-              >
-                <option value="0">left-top</option>
-                <option value="1">top</option>
-                <option value="2">top-right</option>
-                <option value="3">right</option>
-                <option value="4">right-bottom</option>
-                <option value="5">bottom</option>
-                <option value="6">bottom-left</option>
-                <option value="7">left</option>
-              </select>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">depth color</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectdepthcolor"
-              />
-            </div>
-            <div
-              data-jd-class="colorwheel"
-              data-jd-pointer="text-effectdepthcolor"
-            ></div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">depth width</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectdepthwidth"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectdepthwidth"
-              />
-            </div>
-            <hr />
-            <div class="form-group">
-              <label>Curve type</label>
-              <select
-                data-jd-class="input-change"
-                data-jd-pointer="text-effectcurvetype"
-                class="form-control"
-              >
-                <option value="0">Normal</option>
-                <option value="1">Sad</option>
-                <option value="2">Smile</option>
-                <option value="3">Sad unrotate</option>
-                <option value="4">Smile unrotate</option>
-              </select>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">curve round</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectcurveround"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectcurveround"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">curve degree</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectcurvedegree"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectcurvedegree"
-              />
-            </div>
-            <hr />
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">outline color</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectoutlinecolor"
-              />
-            </div>
-            <div
-              data-jd-class="colorwheel"
-              data-jd-pointer="text-effectoutlinecolor"
-            ></div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">outline width</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectoutlinewidth"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-effectoutlinewidth"
-              />
-            </div>
-            <hr />
-          </div>
+                    <!-- text size -->
+                    <div data-jd-class="action" data-jd-value="action-text-size">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text">
+                            kembali
+                        </button>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">fontsize</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-sizefontsize" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-sizefontsize" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">letterspacing</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-sizeletterspacing" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-sizeletterspacing" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">lineheight</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-sizelineheight" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-sizelineheight" />
+                        </div>
+                    </div>
 
-          <!-- text effect -->
-          <div data-jd-class="action" data-jd-value="action-text-shadow">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-text"
-            >
-              kembali
-            </button>
+                    <!-- text transform -->
+                    <div data-jd-class="action" data-jd-value="action-text-transform">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text">
+                            kembali
+                        </button>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">rotate</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-transformrotate" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-transformrotate" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">skew</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-transformskew" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-transformskew" />
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" data-jd-class="input-input" data-jd-pointer="text-transformfliphorizontal" />
+                            <label class="form-check-label">Flip horizontal</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" data-jd-class="input-input" data-jd-pointer="text-transformflipvertical" />
+                            <label class="form-check-label">flip vertical</label>
+                        </div>
+                    </div>
 
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Shadow color</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-shadowcolor"
-              />
-            </div>
-            <div
-              data-jd-class="colorwheel"
-              data-jd-pointer="text-shadowcolor"
-            ></div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Shadow blur</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-shadowblur"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-shadowblur"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Position X</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-shadowposx"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-shadowposx"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Position Y</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="text-shadowposy"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="text-shadowposy"
-              />
-            </div>
-          </div>
+                    <!-- text color -->
+                    <div data-jd-class="action" data-jd-value="action-text-color">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text">
+                            kembali
+                        </button>
+                        <div class="form-group">
+                            <label>type</label>
+                            <select data-jd-class="input-change" data-jd-pointer="text-colortype" class="form-control">
+                                <option value="normal">normal</option>
+                                <option value="linear-gradient">linear-gradient</option>
+                                <option value="radial-gradient">radial-gradient</option>
+                                <option value="same-parent">same-parent</option>
+                            </select>
+                        </div>
+                        <div data-jd-class="colorwheel" data-jd-pointer="text-color"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">color</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-color" />
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="text-coloradd" data-jd-value="#000000">
+                                    add
+                                </button>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">opacity</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-coloropacity" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-coloropacity" />
+                        </div>
+                        <hr />
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">position linear</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-colorposlinear" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-colorposlinear" />
+                        </div>
+                        <hr />
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">position radial x</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-colorposrasialx" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-colorposrasialx" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">position radial y</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-colorposrasialy" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-colorposrasialy" />
+                        </div>
+                    </div>
 
-          <!-- action image -->
-          <div data-jd-class="action" data-jd-value="action-image">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-element"
-            >
-              kembali
-            </button>
-            <div
-              class="btn-toolbar"
-              role="toolbar"
-              aria-label="Toolbar with button groups"
-            >
-              <div class="btn-group mr-2" role="group">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="element-layer"
-                  data-jd-value="up"
-                >
-                  Up
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="element-layer"
-                  data-jd-value="down"
-                >
-                  down
-                </button>
-              </div>
-              <div class="btn-group mr-2" role="group">
-                <button 
-                  type="button" 
-                  class="btn btn-secondary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="element-layer"
-                  data-jd-value="copy"
-                  >
-                    copy
-                  </button>
-                <button 
-                  type="button" 
-                  class="btn btn-secondary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="element-layer"
-                  data-jd-value="reset"
-                  >
-                    reset
-                  </button>
-                 <button 
-                  type="button" 
-                  class="btn btn-secondary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="element-layer"
-                  data-jd-value="delete"
-                  >
-                    delete
-                  </button>
-              </div>
-            </div>
-            <div class="list-group">
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-image-select"
-              >
-                Select
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-image-position"
-              >
-                Position
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-image-dimension"
-              >
-                dimension
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-image-color"
-              >
-                color
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-image-transform"
-              >
-                transform
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-image-effect"
-              >
-                effect
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-image-shadow"
-              >
-                shadow
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                data-jd-class="input-click"
-                data-jd-pointer="action"
-                data-jd-value="action-image-round"
-              >
-                round
-              </button>
-            </div>
-          </div>
+                    <!-- text effect -->
+                    <div data-jd-class="action" data-jd-value="action-text-effect">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text">
+                            kembali
+                        </button>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">stroke color</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-effectstrokecolor" />
+                        </div>
+                        <div data-jd-class="colorwheel" data-jd-pointer="text-effectstrokecolor"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">stroke width</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-effectstrokewidth" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-effectstrokewidth" />
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <label>depth type</label>
+                            <select data-jd-class="input-change" data-jd-pointer="text-effectdepthtype" class="form-control">
+                                <option value="0">left-top</option>
+                                <option value="1">top</option>
+                                <option value="2">top-right</option>
+                                <option value="3">right</option>
+                                <option value="4">right-bottom</option>
+                                <option value="5">bottom</option>
+                                <option value="6">bottom-left</option>
+                                <option value="7">left</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">depth color</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-effectdepthcolor" />
+                        </div>
+                        <div data-jd-class="colorwheel" data-jd-pointer="text-effectdepthcolor"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">depth width</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-effectdepthwidth" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-effectdepthwidth" />
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <label>Curve type</label>
+                            <select data-jd-class="input-change" data-jd-pointer="text-effectcurvetype" class="form-control">
+                                <option value="0">Normal</option>
+                                <option value="1">Sad</option>
+                                <option value="2">Smile</option>
+                                <option value="3">Sad unrotate</option>
+                                <option value="4">Smile unrotate</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">curve round</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-effectcurveround" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-effectcurveround" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">curve degree</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-effectcurvedegree" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-effectcurvedegree" />
+                        </div>
+                        <hr />
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">outline color</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-effectoutlinecolor" />
+                        </div>
+                        <div data-jd-class="colorwheel" data-jd-pointer="text-effectoutlinecolor"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">outline width</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-effectoutlinewidth" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-effectoutlinewidth" />
+                        </div>
+                        <hr />
+                    </div>
 
-          <!-- image select -->
-          <div data-jd-class="action" data-jd-value="action-image-select">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-image"
-            >
-              kembali
-            </button>
-            <div class="custom-file">
-              <input
-                type="file"
-                class="custom-file-input"
-                id="customFile"
-                data-jd-class="input-change"
-                data-jd-pointer="image-selectupload"
-              />
-              <label class="custom-file-label" for="customFile"
-                >Choose file</label
-              >
-            </div>
-            <hr />
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Import</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="URL"
-                data-jd-class="input-change"
-                data-jd-pointer="image-selectimport"
-              />
-            </div>
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-image-selectpixabay"
-            >
-              select from pixabay
-            </button>
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-image-selectrecent"
-            >
-              select from recent
-            </button>
-          </div>
+                    <!-- text effect -->
+                    <div data-jd-class="action" data-jd-value="action-text-shadow">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-text">
+                            kembali
+                        </button>
 
-          <!-- image select pixabay -->
-          <div
-            data-jd-class="action"
-            data-jd-value="action-image-selectpixabay"
-          >
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-image-select"
-            >
-              kembali
-            </button>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">type</span>
-              </div>
-              <select
-                class="custom-select"
-                data-jd-class="input-change"
-                data-jd-pointer="image-selectpixabaytype"
-              >
-                <option value="all">All</option>
-                <option value="photo">Photo</option>
-                <option value="illustration">Illustration</option>
-                <option value="vector">Vector</option>
-              </select>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">color</span>
-              </div>
-              <select
-                class="custom-select"
-                data-jd-class="input-change"
-                data-jd-pointer="image-selectpixabaycolor"
-              >
-                <option value="">All</option>
-                <option value="grayscale">grayscale</option>
-                <option value="transparent">transparent</option>
-                <option value="red">red</option>
-                <option value="orange">orange</option>
-                <option value="yellow">yellow</option>
-                <option value="green">green</option>
-                <option value="turquoise">turquoise</option>
-                <option value="blue">blue</option>
-                <option value="lilac">lilac</option>
-                <option value="pink">pink</option>
-                <option value="white">white</option>
-                <option value="gray">gray</option>
-                <option value="black">black</option>
-                <option value="brown">brown</option>
-              </select>
-            </div>
-            <div class="input-group">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="keyword"
-                data-jd-class="input-input"
-                data-jd-pointer="image-selectpixabaykeyword"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-outline-secondary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="image-selectpixabaysearch"
-                  data-jd-value="search"
-                >
-                  search
-                </button>
-              </div>
-            </div>
-            <div
-              class="text-center"
-              data-jd-class="image-selectpixabaylist">
-              <img
-                src="https://i.ibb.co/yh6ctmj/Untitled.png"
-                class="img-thumbnail"
-                style="max-width: 200px"
-                data-jd-class="input-click"
-                data-jd-pointer="image-selectpixabay"
-                data-jd-value="https://i.ibb.co/yh6ctmj/Untitled.png"
-              />
-            </div>
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="image-selectpixabaynext"
-              data-jd-value="next"
-            >
-              Next
-            </button>
-          </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Shadow color</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-shadowcolor" />
+                        </div>
+                        <div data-jd-class="colorwheel" data-jd-pointer="text-shadowcolor"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Shadow blur</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-shadowblur" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-shadowblur" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Position X</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-shadowposx" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-shadowposx" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Position Y</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="text-shadowposy" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="text-shadowposy" />
+                        </div>
+                    </div>
 
+                    <!-- action image -->
+                    <div data-jd-class="action" data-jd-value="action-image">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-element">
+                            kembali
+                        </button>
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2" role="group">
+                                <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-layer" data-jd-value="up">
+                                    Up
+                                </button>
+                                <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-layer" data-jd-value="down">
+                                    down
+                                </button>
+                            </div>
+                            <div class="btn-group mr-2" role="group">
+                                <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-layer" data-jd-value="copy">
+                                    copy
+                                </button>
+                                <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-layer" data-jd-value="reset">
+                                    reset
+                                </button>
+                                <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="element-layer" data-jd-value="delete">
+                                    delete
+                                </button>
+                            </div>
+                        </div>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image-select">
+                                Select
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image-position">
+                                Position
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image-dimension">
+                                dimension
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image-color">
+                                color
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image-transform">
+                                transform
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image-effect">
+                                effect
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image-shadow">
+                                shadow
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image-round">
+                                round
+                            </button>
+                        </div>
+                    </div>
 
+                    <!-- image select -->
+                    <div data-jd-class="action" data-jd-value="action-image-select">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image">
+                            kembali
+                        </button>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" data-jd-class="input-change" data-jd-pointer="image-selectupload" />
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                        <hr />
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Import</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="URL" data-jd-class="input-change" data-jd-pointer="image-selectimport" />
+                        </div>
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image-selectpixabay">
+                            select from pixabay
+                        </button>
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image-selectrecent">
+                            select from recent
+                        </button>
+                    </div>
 
-          <!-- image recent -->
-          <div data-jd-class="action" data-jd-value="action-image-selectrecent">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-image-select"
-            >
-              kembali
-            </button>
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="image-selectrecentnewest"
-              data-jd-value="next"
-            >
-              recent newest
-            </button>
-            <div
-              class="text-center"
-              data-jd-class="image-selectrecentlist"
-            >
-              <img
-                src="https://i.ibb.co/yh6ctmj/Untitled.png"
-                class="img-thumbnail"
-                style="max-width: 200px"
-                data-jd-class="input-click"
-                data-jd-pointer="image-selectimport"
-                data-jd-value="https://i.ibb.co/yh6ctmj/Untitled.png"
-              />
-            </div>
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="image-selectrecentnext"
-              data-jd-value="next"
-            >
-              Next
-            </button>
-          </div>
+                    <!-- image select pixabay -->
+                    <div data-jd-class="action" data-jd-value="action-image-selectpixabay">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image-select">
+                            kembali
+                        </button>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">type</span>
+                            </div>
+                            <select class="custom-select" data-jd-class="input-change" data-jd-pointer="image-selectpixabaytype">
+                                <option value="all">All</option>
+                                <option value="photo">Photo</option>
+                                <option value="illustration">Illustration</option>
+                                <option value="vector">Vector</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">color</span>
+                            </div>
+                            <select class="custom-select" data-jd-class="input-change" data-jd-pointer="image-selectpixabaycolor">
+                                <option value="">All</option>
+                                <option value="grayscale">grayscale</option>
+                                <option value="transparent">transparent</option>
+                                <option value="red">red</option>
+                                <option value="orange">orange</option>
+                                <option value="yellow">yellow</option>
+                                <option value="green">green</option>
+                                <option value="turquoise">turquoise</option>
+                                <option value="blue">blue</option>
+                                <option value="lilac">lilac</option>
+                                <option value="pink">pink</option>
+                                <option value="white">white</option>
+                                <option value="gray">gray</option>
+                                <option value="black">black</option>
+                                <option value="brown">brown</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="keyword" data-jd-class="input-input" data-jd-pointer="image-selectpixabaykeyword" />
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" data-jd-class="input-click" data-jd-pointer="image-selectpixabaysearch" data-jd-value="search">
+                                    search
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-center" data-jd-class="image-selectpixabaylist">
+                            <img
+                                src="https://i.ibb.co/yh6ctmj/Untitled.png"
+                                class="img-thumbnail"
+                                style="max-width: 200px;"
+                                data-jd-class="input-click"
+                                data-jd-pointer="image-selectpixabay"
+                                data-jd-value="https://i.ibb.co/yh6ctmj/Untitled.png"
+                            />
+                        </div>
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="image-selectpixabaynext" data-jd-value="next">
+                            Next
+                        </button>
+                    </div>
 
-          <!-- image position -->
-          <div data-jd-class="action" data-jd-value="action-image-position">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-image"
-            >
-              kembali
-            </button>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Position x</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-positionx"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-positionx"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Position y</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-positiony"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-positiony"
-              />
-            </div>
-          </div>
+                    <!-- image recent -->
+                    <div data-jd-class="action" data-jd-value="action-image-selectrecent">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image-select">
+                            kembali
+                        </button>
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="image-selectrecentnewest" data-jd-value="next">
+                            recent newest
+                        </button>
+                        <div class="text-center" data-jd-class="image-selectrecentlist">
+                            <img
+                                src="https://i.ibb.co/yh6ctmj/Untitled.png"
+                                class="img-thumbnail"
+                                style="max-width: 200px;"
+                                data-jd-class="input-click"
+                                data-jd-pointer="image-selectimport"
+                                data-jd-value="https://i.ibb.co/yh6ctmj/Untitled.png"
+                            />
+                        </div>
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="image-selectrecentnext" data-jd-value="next">
+                            Next
+                        </button>
+                    </div>
 
-          <!-- text transform -->
-          <div data-jd-class="action" data-jd-value="action-image-transform">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-image"
-            >
-              kembali
-            </button>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">rotate</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-transformrotate"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-transformrotate"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">skew</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-transformskew"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-transformskew"
-              />
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                data-jd-class="input-input"
-                data-jd-pointer="image-transformfliphorizontal"
-              />
-              <label class="form-check-label">Flip horizontal</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                data-jd-class="input-input"
-                data-jd-pointer="image-transformflipvertical"
-              />
-              <label class="form-check-label">flip vertical</label>
-            </div>
-          </div>
+                    <!-- image position -->
+                    <div data-jd-class="action" data-jd-value="action-image-position">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image">
+                            kembali
+                        </button>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Position x</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-positionx" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-positionx" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Position y</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-positiony" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-positiony" />
+                        </div>
+                    </div>
 
-          <!-- text dimension -->
-          <div data-jd-class="action" data-jd-value="action-image-dimension">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-image"
-            >
-              kembali
-            </button>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                data-jd-class="input-input"
-                data-jd-pointer="image-dimensionnatural"
-              />
-              <label class="form-check-label">Natural ratio</label>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">rotate</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-dimensionwidth"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-dimensionwidth"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">skew</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-dimensionheight"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-dimensionheight"
-              />
-            </div>
-          </div>
+                    <!-- text transform -->
+                    <div data-jd-class="action" data-jd-value="action-image-transform">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image">
+                            kembali
+                        </button>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">rotate</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-transformrotate" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-transformrotate" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">skew</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-transformskew" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-transformskew" />
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" data-jd-class="input-input" data-jd-pointer="image-transformfliphorizontal" />
+                            <label class="form-check-label">Flip horizontal</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" data-jd-class="input-input" data-jd-pointer="image-transformflipvertical" />
+                            <label class="form-check-label">flip vertical</label>
+                        </div>
+                    </div>
 
-          <!-- image color -->
-          <div data-jd-class="action" data-jd-value="action-image-color">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-image"
-            >
-              kembali
-            </button>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                data-jd-class="input-input"
-                data-jd-pointer="image-coloreditmode"
-              />
-              <label class="form-check-label">edit mode</label>
-            </div>
-            <div
-              data-jd-class="colorwheel"
-              data-jd-pointer="image-coloreditmain"
-            ></div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">color</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-coloreditmain"
-              />
-            </div>
-            <hr />
-            <div class="form-group">
-              <label>type</label>
-              <select
-                data-jd-class="input-change"
-                data-jd-pointer="image-colorbackgroundtype"
-                class="form-control"
-              >
-                <option value="none">none</option>
-                <option value="normal">normal</option>
-                <option value="linear-gradient">linear-gradient</option>
-                <option value="radial-gradient">radial-gradient</option>
-              </select>
-            </div>
-            <div data-jd-class="colorwheel" data-jd-pointer="image-colorbackground"></div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">color</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-colorbackground"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-primary"
-                  data-jd-class="input-click"
-                  data-jd-pointer="image-colorbackgroundadd"
-                  data-jd-value="#000000"
-                >
-                  add
-                </button>
-              </div>
-            </div>
-            <hr />
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">opacity</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-coloropacity"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-coloropacity"
-              />
-            </div>
-            <hr />
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">position linear</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-colorbackgroundposlinear"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-colorbackgroundposlinear"
-              />
-            </div>
-            <hr />
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">position radial x</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-colorbackgroundposrasialx"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-colorbackgroundposrasialx"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">position radial y</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-colorbackgroundposrasialy"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-colorbackgroundposrasialy"
-              />
-            </div>
-            <hr />
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Filter</span>
-              </div>
-              <select
-                data-jd-class="input-change"
-                data-jd-pointer="image-colorfilter"
-                class="form-control"
-              >
-                <option value="">none</option>
-                <option value="grayscale(100%)">grayscale</option>
-                <option value="blur(0.02em)">blur</option>
-                <option value="brightness(200%)">brightness</option>
-                <option value="contrast(200%)">contrast</option>
-                <option value="hue-rotate(90deg)">hue-rotate 1</option>
-                <option value="hue-rotate(180deg)">hue-rotate 2</option>
-                <option value="invert(100%)">invert</option>
-                <option value="saturate(8)">saturate</option>
-                <option value="sepia(100%)">sepia</option>
-                <option value="contrast(200%) brightness(150%)">
-                  contrast brightness
-                </option>
-              </select>
-            </div>
-          </div>
+                    <!-- text dimension -->
+                    <div data-jd-class="action" data-jd-value="action-image-dimension">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image">
+                            kembali
+                        </button>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" data-jd-class="input-input" data-jd-pointer="image-dimensionnatural" />
+                            <label class="form-check-label">Natural ratio</label>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Width</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-dimensionwidth" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-dimensionwidth" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Height</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-dimensionheight" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-dimensionheight" />
+                        </div>
+                    </div>
 
-          <!-- image effect -->
-          <div data-jd-class="action" data-jd-value="action-image-effect">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-image"
-            >
-              kembali
-            </button>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">stroke color</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-effectstrokecolor"
-              />
-            </div>
-            <div
-              data-jd-class="colorwheel"
-              data-jd-pointer="image-effectstrokecolor"
-            ></div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">stroke width</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-effectstrokewidth"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-effectstrokewidth"
-              />
-            </div>
-            <hr />
-            <div class="form-group">
-              <label>depth type</label>
-              <select
-                data-jd-class="input-change"
-                data-jd-pointer="image-effectdepthtype"
-                class="form-control"
-              >
-                <option value="0">left-top</option>
-                <option value="1">top</option>
-                <option value="2">top-right</option>
-                <option value="3">right</option>
-                <option value="4">right-bottom</option>
-                <option value="5">bottom</option>
-                <option value="6">bottom-left</option>
-                <option value="7">left</option>
-              </select>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">depth color</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-effectdepthcolor"
-              />
-            </div>
-            <div
-              data-jd-class="colorwheel"
-              data-jd-pointer="image-effectdepthcolor"
-            ></div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">depth width</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-effectdepthwidth"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-effectdepthwidth"
-              />
-            </div>
-            <hr />
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">outline color</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-effectoutlinecolor"
-              />
-            </div>
-            <div
-              data-jd-class="colorwheel"
-              data-jd-pointer="image-effectoutlinecolor"
-            ></div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">outline width</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-effectoutlinewidth"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-effectoutlinewidth"
-              />
-            </div>
-            <hr />
-          </div>
+                    <!-- image color -->
+                    <div data-jd-class="action" data-jd-value="action-image-color">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image">
+                            kembali
+                        </button>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" data-jd-class="input-input" data-jd-pointer="image-coloreditmode" />
+                            <label class="form-check-label">edit mode</label>
+                        </div>
+                        <div data-jd-class="colorwheel" data-jd-pointer="image-coloreditmain"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">color</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-coloreditmain" />
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <label>type</label>
+                            <select data-jd-class="input-change" data-jd-pointer="image-colorbackgroundtype" class="form-control">
+                                <option value="none">none</option>
+                                <option value="normal">normal</option>
+                                <option value="linear-gradient">linear-gradient</option>
+                                <option value="radial-gradient">radial-gradient</option>
+                            </select>
+                        </div>
+                        <div data-jd-class="colorwheel" data-jd-pointer="image-colorbackground"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">color</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-colorbackground" />
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="image-colorbackgroundadd" data-jd-value="#000000">
+                                    add
+                                </button>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">opacity</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-coloropacity" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-coloropacity" />
+                        </div>
+                        <hr />
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">position linear</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-colorbackgroundposlinear" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-colorbackgroundposlinear" />
+                        </div>
+                        <hr />
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">position radial x</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-colorbackgroundposrasialx" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-colorbackgroundposrasialx" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">position radial y</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-colorbackgroundposrasialy" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-colorbackgroundposrasialy" />
+                        </div>
+                        <hr />
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Filter</span>
+                            </div>
+                            <select data-jd-class="input-change" data-jd-pointer="image-colorfilter" class="form-control">
+                                <option value="">none</option>
+                                <option value="grayscale(100%)">grayscale</option>
+                                <option value="blur(0.02em)">blur</option>
+                                <option value="brightness(200%)">brightness</option>
+                                <option value="contrast(200%)">contrast</option>
+                                <option value="hue-rotate(90deg)">hue-rotate 1</option>
+                                <option value="hue-rotate(180deg)">hue-rotate 2</option>
+                                <option value="invert(100%)">invert</option>
+                                <option value="saturate(8)">saturate</option>
+                                <option value="sepia(100%)">sepia</option>
+                                <option value="contrast(200%) brightness(150%)">
+                                    contrast brightness
+                                </option>
+                            </select>
+                        </div>
+                    </div>
 
-          <!-- image shadow -->
-          <div data-jd-class="action" data-jd-value="action-image-shadow">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-image"
-            >
-              kembali
-            </button>
+                    <!-- image effect -->
+                    <div data-jd-class="action" data-jd-value="action-image-effect">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image">
+                            kembali
+                        </button>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">stroke color</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-effectstrokecolor" />
+                        </div>
+                        <div data-jd-class="colorwheel" data-jd-pointer="image-effectstrokecolor"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">stroke width</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-effectstrokewidth" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-effectstrokewidth" />
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <label>depth type</label>
+                            <select data-jd-class="input-change" data-jd-pointer="image-effectdepthtype" class="form-control">
+                                <option value="0">left-top</option>
+                                <option value="1">top</option>
+                                <option value="2">top-right</option>
+                                <option value="3">right</option>
+                                <option value="4">right-bottom</option>
+                                <option value="5">bottom</option>
+                                <option value="6">bottom-left</option>
+                                <option value="7">left</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">depth color</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-effectdepthcolor" />
+                        </div>
+                        <div data-jd-class="colorwheel" data-jd-pointer="image-effectdepthcolor"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">depth width</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-effectdepthwidth" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-effectdepthwidth" />
+                        </div>
+                        <hr />
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">outline color</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-effectoutlinecolor" />
+                        </div>
+                        <div data-jd-class="colorwheel" data-jd-pointer="image-effectoutlinecolor"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">outline width</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-effectoutlinewidth" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-effectoutlinewidth" />
+                        </div>
+                        <hr />
+                    </div>
 
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Shadow color</span>
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-shadowcolor"
-              />
-            </div>
-            <div
-              data-jd-class="colorwheel"
-              data-jd-pointer="image-shadowcolor"
-            ></div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Shadow blur</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-shadowblur"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-shadowblur"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Position X</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-shadowposx"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-shadowposx"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Position Y</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-shadowposy"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-shadowposy"
-              />
-            </div>
-            <hr />
-          </div>
+                    <!-- image shadow -->
+                    <div data-jd-class="action" data-jd-value="action-image-shadow">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image">
+                            kembali
+                        </button>
 
-          <!-- image round -->
-          <div data-jd-class="action" data-jd-value="action-image-round">
-            <button
-              class="btn btn-primary"
-              data-jd-class="input-click"
-              data-jd-pointer="action"
-              data-jd-value="action-image"
-            >
-              kembali
-            </button>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">top left</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-roundtopleft"
-              />
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Shadow color</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-shadowcolor" />
+                        </div>
+                        <div data-jd-class="colorwheel" data-jd-pointer="image-shadowcolor"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Shadow blur</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-shadowblur" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-shadowblur" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Position X</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-shadowposx" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-shadowposx" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Position Y</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-shadowposy" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-shadowposy" />
+                        </div>
+                        <hr />
+                    </div>
+
+                    <!-- image round -->
+                    <div data-jd-class="action" data-jd-value="action-image-round">
+                        <button class="btn btn-primary" data-jd-class="input-click" data-jd-pointer="action" data-jd-value="action-image">
+                            kembali
+                        </button>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">top left</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-roundtopleft" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-roundtopleft" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">top right</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-roundtopright" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-roundtopright" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">bottom left</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-roundbottomleft" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-roundbottomleft" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">bottom right</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="0" data-jd-class="input-input" data-jd-pointer="image-roundbottomright" />
+                        </div>
+                        <div class="form-group">
+                            <input type="range" class="form-control-range" data-jd-class="input-input" data-jd-pointer="image-roundbottomright" />
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-roundtopleft"
-              />
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper" class="m-0 p-0">
+                <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle</a>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                            Position
+                        </button>
+                        <div class="dropdown-menu">
+                            <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="position" data-jd-value="0">Depan</button>
+                            <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="position" data-jd-value="1">kiri</button>
+                            <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="position" data-jd-value="2">tengah</button>
+                            <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="position" data-jd-value="3">kanan</button>
+                            <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="position" data-jd-value="4">belakang</button>
+                        </div>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <!----dev------->
+                        <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="unredo" data-jd-value="undo">Undo</button>
+                        <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="unredo" data-jd-value="redo">Redo</button>
+                        <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="printable">area</button>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Mode</button>
+                        <div class="dropdown-menu">
+                            <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="mode" data-jd-value="mockup">Mockup</button>
+                            <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="mode" data-jd-value="zoom">Zoom</button>
+                            <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="mode" data-jd-value="raw">Raw</button>
+                        </div>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <!----dev------->
+                        <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="saving">Save</button>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Save</button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="save" data-jd-value="form">send form</button>
+                            <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="save" data-jd-value="mockup">mockup image</button>
+                            <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="save" data-jd-value="raw">raw image</button>
+                            <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="save" data-jd-value="data">data</button>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="m-2">
+                    <div data-jd-class="main"></div>
+                </div>
             </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">top right</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-roundtopright"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-roundtopright"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">bottom left</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-roundbottomleft"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-roundbottomleft"
-              />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">bottom right</span>
-              </div>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="0"
-                data-jd-class="input-input"
-                data-jd-pointer="image-roundbottomright"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="range"
-                class="form-control-range"
-                data-jd-class="input-input"
-                data-jd-pointer="image-roundbottomright"
-              />
-            </div>
-          </div>
+            <!-- /#page-content-wrapper -->
         </div>
-      </div>
-      <!-- /#sidebar-wrapper -->
+        <!-- /#wrapper -->
+        <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 
-      <!-- Page Content -->
-      <div id="page-content-wrapper" class="m-0 p-0">
-        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"
-            >Toggle</a
-          >
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              data-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Position
-            </button>
-            <div class="dropdown-menu">
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="position" data-jd-value="0"
-                >Depan</button
-              >
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="position" data-jd-value="1"
-                >kiri</button
-              >
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="position" data-jd-value="2"
-                >tengah</button
-              >
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="position" data-jd-value="3"
-                >kanan</button
-              >
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="position" data-jd-value="4"
-                >belakang</button
-              >
-            </div>
-          </div>
-          <div
-            class="btn-group"
-            role="group"
-            aria-label="Basic example"
-          >
-          <!----dev------->
-            <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="unredo" data-jd-value="undo">Undo</button>
-            <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="unredo" data-jd-value="redo">Redo</button>
-            <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="printable">area</button>
-          </div>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Mode</button>
-            <div class="dropdown-menu">
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="mode" data-jd-value="mockup">Mockup</button>
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="mode" data-jd-value="zoom">Zoom</button>
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="mode" data-jd-value="raw">Raw</button>
-            </div>
-          </div>
-          <div class="btn-group" role="group" aria-label="Basic example" >
-          <!----dev------->
-            <button type="button" class="btn btn-secondary" data-jd-class="input-click" data-jd-pointer="saving">Save</button>
-          </div>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" >Save</button>
-            <div class="dropdown-menu  dropdown-menu-right">
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="save" data-jd-value="form">send form</button>
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="save" data-jd-value="mockup">mockup image</button>
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="save" data-jd-value="raw">raw image</button>
-              <button class="jd-position dropdown-item" data-jd-class="input-click" data-jd-pointer="save" data-jd-value="data">data</button>
-            </div>
-          </div>
-        </nav>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/reinvented-color-wheel@0.4.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.0/dist/jszip.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script type="text/javascript">
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
 
-        <div class="m-2">
-          <div data-jd-class="main"></div>
-          <imag src="blob:null/e7784b00-46d8-45d2-9989-f429cc2e288e" />
-        </div>
-      </div>
-      <!-- /#page-content-wrapper -->
-    </div>
-    <!-- /#wrapper -->
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reinvented-color-wheel@0.4.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.0/dist/jszip.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="text/javascript">
-      $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-      });
-    </script>
-
-    <script src="js/jdesign.js"></script>
-    <script type="text/javascript">
-      let jd = new jdesign();
-      jd.apikey({
-        apiflash: `fa77a505771845de93e2fe615b77f40e`
-      })
-      jd.form();
-      jd.create();
-      
-    </script>
-
-    
-  </body>
+        <script src="js/jdesign.js"></script>
+        <script type="text/javascript">
+            let jd = new jdesign();
+            jd.create();
+        </script>
+    </body>
 </html>
